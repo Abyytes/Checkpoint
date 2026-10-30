@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://lxmdab8co1hk"]
+
+[ext_resource type="Script" uid="uid://bwc1gp6f0atgt" path="res://script/script object/rhythm_gate.gd" id="1_gate"]
+
+[sub_resource type="Gradient" id="Gradient_solid"]
+colors = PackedColorArray(1, 1, 1, 0.9, 1, 1, 1, 0.9)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_solid"]
+gradient = SubResource("Gradient_solid")
+width = 28
+height = 28
+
+[node name="RhythmGate" type="Node2D" unique_id=1122075641]
+script = ExtResource("1_gate")
+
+[node name="Pieces" type="Node2D" parent="." unique_id=1980268626]
+
+[node name="Piece" type="Sprite2D" parent="Pieces" unique_id=1037137702]
+texture = SubResource("GradientTexture2D_solid")
+
+[node name="CounterLabel" type="Label" parent="." unique_id=548502652]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+text = "G1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=424509904]

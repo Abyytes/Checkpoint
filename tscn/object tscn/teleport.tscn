@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://f7nedrmnagd4"]
+
+[ext_resource type="Script" uid="uid://cguhpuis03s7a" path="res://script/script object/teleport.gd" id="1_tyd48"]
+[ext_resource type="Texture2D" uid="uid://dr32sdrex1lf3" path="res://assets/placeholder/teleport_placeholder.png" id="2_tex"]
+
+[node name="Teleport" type="Node2D" unique_id=2039622763]
+script = ExtResource("1_tyd48")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1231111498]
+texture = ExtResource("2_tex")
+
+[node name="IdLabel" type="Label" parent="." unique_id=89622031]
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_colors/font_outline_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

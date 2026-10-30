@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ck3bmnxehd53a"]
+
+[ext_resource type="Script" uid="uid://bbrumon0llo4u" path="res://script/script object/finish_gate.gd" id="1_bgkpe"]
+[ext_resource type="Texture2D" uid="uid://dgbejka7a5s5a" path="res://assets/Placeholder/finish_placeholder.png" id="2_yw6ew"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55p71"]
+
+[node name="FinishGate" type="Area2D" unique_id=1429664836]
+script = ExtResource("1_bgkpe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1539977114]
+shape = SubResource("RectangleShape2D_55p71")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=442903885]
+texture = ExtResource("2_yw6ew")
+metadata/_edit_lock_ = true

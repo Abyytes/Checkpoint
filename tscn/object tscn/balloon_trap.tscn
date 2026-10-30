@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://biu0do7q6vvb0"]
+
+[ext_resource type="Script" uid="uid://bjonnf2e3xlvw" path="res://script/script object/balloon_trap.gd" id="1_mpo1e"]
+[ext_resource type="Texture2D" uid="uid://dm8364mr5dqqi" path="res://assets/placeholder/balloon_body_placeholder.png" id="2_body"]
+[ext_resource type="Texture2D" uid="uid://crvdpohafb1sf" path="res://assets/placeholder/balloon_spike_placeholder.png" id="3_spike"]
+
+[node name="BalloonTrap" type="Node2D" unique_id=695632212]
+script = ExtResource("1_mpo1e")
+
+[node name="Spikes" type="Node2D" parent="." unique_id=1721584272]
+
+[node name="Up" type="Sprite2D" parent="Spikes" unique_id=600143914]
+position = Vector2(0, -34)
+texture = ExtResource("3_spike")
+
+[node name="Right" type="Sprite2D" parent="Spikes" unique_id=1939863587]
+position = Vector2(34, 0)
+rotation = 1.5708
+texture = ExtResource("3_spike")
+
+[node name="Down" type="Sprite2D" parent="Spikes" unique_id=903248996]
+position = Vector2(0, 34)
+rotation = 3.14159
+texture = ExtResource("3_spike")
+
+[node name="Left" type="Sprite2D" parent="Spikes" unique_id=1583015953]
+position = Vector2(-34, 0)
+rotation = 4.71239
+texture = ExtResource("3_spike")
+
+[node name="UpRight" type="Sprite2D" parent="Spikes" unique_id=638910026]
+position = Vector2(25, -25)
+rotation = 0.7854
+texture = ExtResource("3_spike")
+
+[node name="DownRight" type="Sprite2D" parent="Spikes" unique_id=5263807]
+position = Vector2(25, 25)
+rotation = 2.35619
+texture = ExtResource("3_spike")
+
+[node name="DownLeft" type="Sprite2D" parent="Spikes" unique_id=737376935]
+position = Vector2(-25, 25)
+rotation = 3.92699
+texture = ExtResource("3_spike")
+
+[node name="UpLeft" type="Sprite2D" parent="Spikes" unique_id=365870619]
+position = Vector2(-25, -25)
+rotation = 5.49779
+texture = ExtResource("3_spike")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=372891233]
+texture = ExtResource("2_body")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bka0an53r0aib"]
+
+[ext_resource type="Script" uid="uid://bbkmxxe10c325" path="res://script/script object/hoax_tile.gd" id="1_xurq1"]
+[ext_resource type="Texture2D" uid="uid://cq73xey5xvx2w" path="res://assets/Placeholder/hoax_dead_placeholder.png" id="2_vtgf1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_55p71"]
+
+[node name="hoaxtile" type="Area2D" unique_id=573683924]
+script = ExtResource("1_xurq1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1144310468]
+shape = SubResource("RectangleShape2D_55p71")
+metadata/_edit_lock_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1066300182]
+texture = ExtResource("2_vtgf1")
+metadata/_edit_lock_ = true

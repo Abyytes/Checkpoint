@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cacxdy2odawx"]
+
+[ext_resource type="Script" uid="uid://bkftig6y73eqj" path="res://script/script object/virus.gd" id="1_j8vgc"]
+[ext_resource type="Texture2D" uid="uid://dsx8wekqc8q13" path="res://assets/placeholder/virus_placeholder.png" id="2_body"]
+
+[node name="Virus" type="Node2D" unique_id=1007714594]
+script = ExtResource("1_j8vgc")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1837844333]
+texture = ExtResource("2_body")
+
+[node name="AlertMark" type="Label" parent="." unique_id=681507491]
+visible = false
+offset_left = -5.0
+offset_top = -40.0
+offset_right = 5.0
+offset_bottom = -10.0
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 22
+text = "!"
+horizontal_alignment = 1

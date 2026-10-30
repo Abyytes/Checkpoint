@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dmwa85x6tsu5h"]
+
+[ext_resource type="Texture2D" uid="uid://dx48idw4yjinl" path="res://assets/Tilemap/tile.png" id="1_85hh8"]
+[ext_resource type="PackedScene" uid="uid://bf05tn1xkl008" path="res://tscn/player.tscn" id="1_et3w1"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwfrw"]
+resource_name = "Placeholder tile"
+texture = ExtResource("1_85hh8")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_85hh8"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_gwfrw")
+
+[node name="level1" type="Node2D" unique_id=1020848327]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1363614180]
+layer = -10
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=908364808]
+offset_left = -16000.0
+offset_top = -16000.0
+offset_right = 16000.0
+offset_bottom = 16000.0
+color = Color(0.29759902, 9.361431e-06, 0.23146066, 1)
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=580171865]
+tile_set = SubResource("TileSet_85hh8")
+
+[node name="Player2" parent="." unique_id=1975995292 instance=ExtResource("1_et3w1")]

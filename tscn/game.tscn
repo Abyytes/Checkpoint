@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://boby54jhvpod6"]
+
+[ext_resource type="PackedScene" uid="uid://c2yexx6jfq8b5" path="res://tscn/hoax_popup.tscn" id="1_407eg"]
+
+[node name="game" type="Node2D" unique_id=1394295195]
+
+[node name="HoaxPopup" parent="." unique_id=1430220027 instance=ExtResource("1_407eg")]

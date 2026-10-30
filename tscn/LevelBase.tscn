@@ -1,0 +1,98 @@
+[gd_scene format=4 uid="uid://dfc47i01i60ja"]
+
+[ext_resource type="Texture2D" uid="uid://dx48idw4yjinl" path="res://assets/Tilemap/tile.png" id="1_35lyk"]
+[ext_resource type="Script" uid="uid://d0ii5lmwom47v" path="res://script/level_base.gd" id="1_puaj3"]
+[ext_resource type="PackedScene" uid="uid://bf05tn1xkl008" path="res://tscn/player.tscn" id="2_puaj3"]
+[ext_resource type="PackedScene" uid="uid://ck3bmnxehd53a" path="res://tscn/object tscn/finish_gate.tscn" id="3_xk4il"]
+[ext_resource type="PackedScene" uid="uid://c2yexx6jfq8b5" path="res://tscn/hoax_popup.tscn" id="4_6spyo"]
+[ext_resource type="PackedScene" uid="uid://bka0an53r0aib" path="res://tscn/object tscn/hoaxtile.tscn" id="4_55p71"]
+[ext_resource type="PackedScene" uid="uid://b554wvwpq41nj" path="res://tscn/object tscn/coin.tscn" id="5_pm2ft"]
+[ext_resource type="PackedScene" uid="uid://bpuoj7oy824s" path="res://tscn/object tscn/spike.tscn" id="6_guuvn"]
+[ext_resource type="PackedScene" uid="uid://b0qctdugwopmb" path="res://tscn/object tscn/spring.tscn" id="7_rllrf"]
+[ext_resource type="PackedScene" uid="uid://dqa2v50t120xm" path="res://tscn/object tscn/hoax_tile_v2.tscn" id="10_pm2ft"]
+[ext_resource type="PackedScene" uid="uid://biu0do7q6vvb0" path="res://tscn/object tscn/balloon_trap.tscn" id="11_guuvn"]
+[ext_resource type="PackedScene" uid="uid://f7nedrmnagd4" path="res://tscn/object tscn/teleport.tscn" id="12_guuvn"]
+[ext_resource type="PackedScene" uid="uid://cacxdy2odawx" path="res://tscn/object tscn/virus.tscn" id="13_rllrf"]
+[ext_resource type="PackedScene" uid="uid://lxmdab8co1hk" path="res://tscn/object tscn/RhythmGate.tscn" id="13_ub8ns"]
+[ext_resource type="PackedScene" uid="uid://b0gmdm23uco6p" path="res://tscn/object tscn/RhythmTile.tscn" id="14_wrk5r"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pm2ft"]
+resource_name = "Placeholder tile"
+texture = ExtResource("1_35lyk")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_85hh8"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_pm2ft")
+
+[node name="LevelBase" type="Node2D" unique_id=1020848327]
+script = ExtResource("1_puaj3")
+metadata/_edit_vertical_guides_ = [-296.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1363614180]
+layer = -10
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=908364808]
+anchors_preset = -1
+offset_left = -16000.0
+offset_top = -16024.0
+offset_right = 16000.0
+offset_bottom = 15976.0
+color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+metadata/_edit_lock_ = true
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=580171865]
+tile_map_data = PackedByteArray("AAAAAAEAAAAAAAAAAAD//wEAAAAAAAAAAAABAAEAAAAAAAAAAAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAD8/wEAAAAAAAAAAAD8////AAAAAAAAAAD8//3/AAAAAAAAAAD8//z/AAAAAAAAAAD9//z/AAAAAAAAAAD+//z/AAAAAAAAAAD///z/AAAAAAAAAAAAAPz/AAAAAAAAAAABAPz/AAAAAAAAAAACAPz/AAAAAAAAAAADAPz/AAAAAAAAAAADAP3/AAAAAAAAAAADAP7/AAAAAAAAAAADAP//AAAAAAAAAAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAEAAEAAAAAAAAAAAAGAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAGAP//AAAAAAAAAAAHAAEAAAAAAAAAAAAHAP//AAAAAAAAAAAIAP//AAAAAAAAAAAIAAEAAAAAAAAAAAAJAAEAAAAAAAAAAAAKAAEAAAAAAAAAAAALAAEAAAAAAAAAAAALAAAAAAAAAAAAAAALAP//AAAAAAAAAAALAP7/AAAAAAAAAAALAP3/AAAAAAAAAAALAPz/AAAAAAAAAAAJAP//AAAAAAAAAAAJAP7/AAAAAAAAAAAJAP3/AAAAAAAAAAAJAPz/AAAAAAAAAAAIAPz/AAAAAAAAAAAHAPz/AAAAAAAAAAAGAPz/AAAAAAAAAAALAPv/AAAAAAAAAAALAPr/AAAAAAAAAAALAPn/AAAAAAAAAAALAPj/AAAAAAAAAAAKAPj/AAAAAAAAAAAJAPj/AAAAAAAAAAAIAPj/AAAAAAAAAAAHAPj/AAAAAAAAAAAGAPj/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAPr/AAAAAAAAAAAFAPz/AAAAAAAAAAAEAPz/AAAAAAAAAAAFAPr/AAAAAAAAAAAEAPr/AAAAAAAAAAAEAPn/AAAAAAAAAAAEAPj/AAAAAAAAAAAEAPf/AAAAAAAAAAACAPv/AAAAAAAAAAACAPr/AAAAAAAAAAACAPn/AAAAAAAAAAACAPj/AAAAAAAAAAAEAPb/AAAAAAAAAAADAPb/AAAAAAAAAAACAPb/AAAAAAAAAAABAPb/AAAAAAAAAAAAAPb/AAAAAAAAAAAAAPf/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPn/AAAAAAAAAAAAAPr/AAAAAAAAAAD+//v/AAAAAAAAAAD+//r/AAAAAAAAAAD+//n/AAAAAAAAAAD+//j/AAAAAAAAAAD+//f/AAAAAAAAAAD+//b/AAAAAAAAAAAAAPX/AAAAAAAAAAAAAPT/AAAAAAAAAAD///T/AAAAAAAAAAD+//T/AAAAAAAAAAD9//T/AAAAAAAAAAD8//T/AAAAAAAAAAD8//X/AAAAAAAAAAD8//b/AAAAAAAAAAD8//f/AAAAAAAAAAD8//j/AAAAAAAAAAD8//n/AAAAAAAAAAD8//r/AAAAAAAAAAD6//j/AAAAAAAAAAD5//j/AAAAAAAAAAD4//j/AAAAAAAAAAD4//n/AAAAAAAAAAD4//r/AAAAAAAAAAD4//v/AAAAAAAAAAD4//z/AAAAAAAAAAD5//z/AAAAAAAAAAD6//z/AAAAAAAAAAD7//z/AAAAAAAAAAD7//b/AAAAAAAAAAD6//b/AAAAAAAAAAD5//b/AAAAAAAAAAD4//b/AAAAAAAAAAD3//b/AAAAAAAAAAD2//b/AAAAAAAAAAD2//f/AAAAAAAAAAD2//j/AAAAAAAAAAD2//n/AAAAAAAAAAD2//r/AAAAAAAAAAD2//v/AAAAAAAAAAD2//z/AAAAAAAAAAD2//3/AAAAAAAAAAD2//7/AAAAAAAAAAD2////AAAAAAAAAAD3////AAAAAAAAAAD4////AAAAAAAAAAD5////AAAAAAAAAAD6////AAAAAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAAAAAAAAAD7/wEAAAAAAAAAAAD8//7/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_85hh8")
+
+[node name="Gates" type="TileMapLayer" parent="." unique_id=629879866]
+
+[node name="Objects" type="Node2D" parent="." unique_id=2028419958]
+
+[node name="FinishGate" parent="Objects" unique_id=1429664836 instance=ExtResource("3_xk4il")]
+position = Vector2(-144, -16)
+
+[node name="hoaxtile" parent="Objects" unique_id=573683924 instance=ExtResource("4_55p71")]
+position = Vector2(-168, -144)
+
+[node name="coin" parent="Objects" unique_id=1092498999 instance=ExtResource("5_pm2ft")]
+position = Vector2(120, 16)
+
+[node name="spike" parent="Objects" unique_id=1451885565 instance=ExtResource("6_guuvn")]
+position = Vector2(304, -144)
+
+[node name="spring" parent="Objects" unique_id=2100485050 instance=ExtResource("7_rllrf")]
+position = Vector2(-144, 16)
+
+[node name="HoaxTileV2" parent="Objects" unique_id=550763211 instance=ExtResource("10_pm2ft")]
+position = Vector2(-184, -184)
+
+[node name="RhythmGate" parent="Objects" unique_id=1122075641 instance=ExtResource("13_ub8ns")]
+position = Vector2(208, -144)
+
+[node name="RhythmTile" parent="Objects" unique_id=513136299 instance=ExtResource("14_wrk5r")]
+position = Vector2(208, 16)
+
+[node name="RhythmTile2" parent="Objects" unique_id=1622085325 instance=ExtResource("14_wrk5r")]
+position = Vector2(56, 16)
+
+[node name="Teleport" parent="Objects" unique_id=2039622763 instance=ExtResource("12_guuvn")]
+position = Vector2(-32, 16)
+
+[node name="Teleport2" parent="Objects" unique_id=1888490471 instance=ExtResource("12_guuvn")]
+position = Vector2(-208, -184)
+
+[node name="BalloonTrap" parent="Objects" unique_id=695632212 instance=ExtResource("11_guuvn")]
+position = Vector2(272, -184)
+
+[node name="Virus" parent="Objects" unique_id=1007714594 instance=ExtResource("13_rllrf")]
+position = Vector2(-240, -80)
+
+[node name="PlayerStart" type="Marker2D" parent="." unique_id=911612661]
+position = Vector2(-144, -16)
+
+[node name="Player" parent="." unique_id=1975995292 instance=ExtResource("2_puaj3")]
+position = Vector2(-112, 16)
+
+[node name="HoaxPopup" parent="." unique_id=1430220027 instance=ExtResource("4_6spyo")]
