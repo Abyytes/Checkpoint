@@ -3,9 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://dx48idw4yjinl" path="res://assets/Tilemap/tile.png" id="1_35lyk"]
 [ext_resource type="Script" uid="uid://d0ii5lmwom47v" path="res://script/level_base.gd" id="1_puaj3"]
 [ext_resource type="PackedScene" uid="uid://bf05tn1xkl008" path="res://tscn/player.tscn" id="2_puaj3"]
+[ext_resource type="Texture2D" uid="uid://ddpn4wa7835kh" path="res://assets/Tilemap/Sprite-0001.png" id="3_ub8ns"]
 [ext_resource type="PackedScene" uid="uid://ck3bmnxehd53a" path="res://tscn/object tscn/finish_gate.tscn" id="3_xk4il"]
+[ext_resource type="Texture2D" uid="uid://bebyccuik27vv" path="res://assets/Tilemap/Abu2.png" id="4_1kkgj"]
 [ext_resource type="PackedScene" uid="uid://c2yexx6jfq8b5" path="res://tscn/hoax_popup.tscn" id="4_6spyo"]
 [ext_resource type="PackedScene" uid="uid://bka0an53r0aib" path="res://tscn/object tscn/hoaxtile.tscn" id="4_55p71"]
+[ext_resource type="Texture2D" uid="uid://gwjv8ryhc1kg" path="res://assets/Tilemap/Abu1.png" id="5_5q3p5"]
 [ext_resource type="PackedScene" uid="uid://b554wvwpq41nj" path="res://tscn/object tscn/coin.tscn" id="5_pm2ft"]
 [ext_resource type="PackedScene" uid="uid://bpuoj7oy824s" path="res://tscn/object tscn/spike.tscn" id="6_guuvn"]
 [ext_resource type="PackedScene" uid="uid://b0qctdugwopmb" path="res://tscn/object tscn/spring.tscn" id="7_rllrf"]
@@ -22,9 +25,27 @@ texture = ExtResource("1_35lyk")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wrk5r"]
+texture = ExtResource("3_ub8ns")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s8ckn"]
+texture = ExtResource("4_1kkgj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f56nf"]
+texture = ExtResource("5_5q3p5")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_85hh8"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_pm2ft")
+sources/1 = SubResource("TileSetAtlasSource_wrk5r")
+sources/2 = SubResource("TileSetAtlasSource_s8ckn")
+sources/3 = SubResource("TileSetAtlasSource_f56nf")
 
 [node name="LevelBase" type="Node2D" unique_id=1020848327]
 script = ExtResource("1_puaj3")
@@ -78,7 +99,7 @@ position = Vector2(208, 16)
 position = Vector2(56, 16)
 
 [node name="Teleport" parent="Objects" unique_id=2039622763 instance=ExtResource("12_guuvn")]
-position = Vector2(-32, 16)
+position = Vector2(-80, -80)
 
 [node name="Teleport2" parent="Objects" unique_id=1888490471 instance=ExtResource("12_guuvn")]
 position = Vector2(-208, -184)
@@ -90,7 +111,7 @@ position = Vector2(272, -184)
 position = Vector2(-240, -80)
 
 [node name="PlayerStart" type="Marker2D" parent="." unique_id=911612661]
-position = Vector2(-144, -16)
+position = Vector2(-80, 16)
 
 [node name="Player" parent="." unique_id=1975995292 instance=ExtResource("2_puaj3")]
 position = Vector2(-112, 16)
