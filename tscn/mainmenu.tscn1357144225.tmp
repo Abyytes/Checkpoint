@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://0hufwjr5yiwa"]
+
+[ext_resource type="Script" uid="uid://ddclot23xbi3m" path="res://script/mainmenu.gd" id="1_cwr5t"]
+[ext_resource type="PackedScene" path="res://tscn/SettingsPanel.tscn" id="2_frxbt"]
+
+[node name="mainmenu" type="Control" unique_id=1666083025]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cwr5t")
+
+[node name="CanvasLayer" type="TextureRect" parent="." unique_id=2094282471]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="." unique_id=813367340]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="AspectRatioContainer" type="MarginContainer" parent="." unique_id=1736837629]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer" unique_id=715386869]
+layout_mode = 2
+size_flags_vertical = 4
+alignment = 1
+
+[node name="start" type="Button" parent="AspectRatioContainer/VBoxContainer" unique_id=457549987]
+unique_name_in_owner = true
+layout_mode = 2
+text = "START"
+
+[node name="settings" type="Button" parent="AspectRatioContainer/VBoxContainer" unique_id=79514067]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="exit" type="Button" parent="AspectRatioContainer/VBoxContainer" unique_id=248974234]
+unique_name_in_owner = true
+layout_mode = 2
+text = "EXIT"
+
+[node name="Credit" type="Button" parent="." unique_id=689124311]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1039.0
+offset_top = 489.0
+offset_right = 1154.0
+offset_bottom = 527.0
+text = "CREDIT"
+
+[node name="startpopup" type="CanvasLayer" parent="." unique_id=2044168424]
+unique_name_in_owner = true
+visible = false
+
+[node name="Control" type="Control" parent="startpopup" unique_id=943063438]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupMenu" type="ColorRect" parent="startpopup/Control" unique_id=84955688]
+layout_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="startpopup/Control/PopupMenu" unique_id=2090000294]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="startpopup/Control/PopupMenu/CenterContainer" unique_id=1655263324]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer" unique_id=390531417]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=247598186]
+layout_mode = 2
+
+[node name="continue" type="Button" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=662006723]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="newgame" type="Button" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2020330755]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NEW GAME"
+
+[node name="back" type="Button" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=335815827]
+unique_name_in_owner = true
+layout_mode = 2
+text = "X"
+
+[node name="SettingsPanel" parent="." unique_id=554000851 instance=ExtResource("2_frxbt")]
+unique_name_in_owner = true

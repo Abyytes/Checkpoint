@@ -1,0 +1,97 @@
+[gd_scene format=3 uid="uid://bt6yjcxccpnf3"]
+
+[ext_resource type="Script" uid="uid://dsdjkqh5x7wu" path="res://script/settings_panel.gd" id="1_panel"]
+
+[node name="SettingsPanel" type="CanvasLayer" unique_id=28072501]
+process_mode = 3
+layer = 30
+visible = false
+script = ExtResource("1_panel")
+
+[node name="Root" type="Control" parent="." unique_id=734728690]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="Root" unique_id=1206404776]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.7529412, 0, 0.4, 0)
+
+[node name="Center" type="CenterContainer" parent="Root" unique_id=292370212]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Root/Center" unique_id=82751475]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Root/Center/Panel" unique_id=449835081]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="Box" type="VBoxContainer" parent="Root/Center/Panel/Margin" unique_id=1375615907]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="TitleLabel" type="Label" parent="Root/Center/Panel/Margin/Box" unique_id=1549819573]
+layout_mode = 2
+text = "PENGATURAN"
+horizontal_alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="Root/Center/Panel/Margin/Box" unique_id=1447211424]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="MusicLabel" type="Label" parent="Root/Center/Panel/Margin/Box/MusicRow" unique_id=1327744793]
+custom_minimum_size = Vector2(90, 0)
+layout_mode = 2
+text = "Musik"
+
+[node name="MusicSlider" type="HSlider" parent="Root/Center/Panel/Margin/Box/MusicRow" unique_id=800284048]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="MusicValue" type="Label" parent="Root/Center/Panel/Margin/Box/MusicRow" unique_id=1925053927]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(56, 0)
+layout_mode = 2
+text = "80%"
+horizontal_alignment = 2
+
+[node name="MuteCheck" type="CheckButton" parent="Root/Center/Panel/Margin/Box" unique_id=2129556029]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Bisukan semua suara"
+
+[node name="FullscreenCheck" type="CheckButton" parent="Root/Center/Panel/Margin/Box" unique_id=1622420606]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+text = "Layar penuh"
+
+[node name="BackButton" type="Button" parent="Root/Center/Panel/Margin/Box" unique_id=561083405]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+text = "KEMBALI"

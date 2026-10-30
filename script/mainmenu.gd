@@ -5,13 +5,14 @@ const GAME_SCENE := "res://game.tscn"   # sesuaikan path scene game-mu
 @onready var popup: CanvasLayer = %startpopup
 @onready var continue_button: Button = %continue
 @onready var newgame_button: Button = %newgame
+@onready var settings_panel: CanvasLayer = $SettingsPanel
 
 func _ready() -> void:
 	popup.visible = false
 
 	%start.pressed.connect(_on_start_pressed)
 	%exit.pressed.connect(_on_exit_pressed)
-	%settings.pressed.connect(_on_exit_pressed)
+	%settings.pressed.connect(_on_settings_pressed)
 	%Credit.pressed.connect(_on_credit_pressed)
 
 	continue_button.pressed.connect(_on_continue_pressed)
@@ -30,12 +31,14 @@ func _on_start_pressed() -> void:
 	# Sudah ada save: tampilkan pilihan Continue / New Game
 	popup.visible = true
 	continue_button.grab_focus()
-
 # --- Popup ---
 
 func _start_new_game() -> void:
 	SaveManager.new_game()
 	get_tree().change_scene_to_file(GAME_SCENE)
+
+func _on_settings_pressed() -> void:
+	settings_panel.open()
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

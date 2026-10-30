@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://0hufwjr5yiwa"]
 
 [ext_resource type="Script" uid="uid://ddclot23xbi3m" path="res://script/mainmenu.gd" id="1_cwr5t"]
+[ext_resource type="PackedScene" path="res://tscn/SettingsPanel.tscn" id="2_frxbt"]
 
 [node name="mainmenu" type="Control" unique_id=1666083025]
 layout_mode = 3
@@ -104,3 +105,6 @@ text = "NEW GAME"
 unique_name_in_owner = true
 layout_mode = 2
 text = "X"
+
+[node name="SettingsPanel" parent="." unique_id=554000851 instance=ExtResource("2_frxbt")]
+unique_name_in_owner = true

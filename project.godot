@@ -17,11 +17,13 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 [autoload]
 
 SaveManager="*uid://nsss7ohgf8gi"
+SettingsManager="*uid://jkbewxgiig8r"
 
 [display]
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 
 [physics]
 
