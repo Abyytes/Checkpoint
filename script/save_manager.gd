@@ -1,40 +1,128 @@
 extends Node
+## Autoload "SaveManager". Satu-satunya yang membaca dan menulis file save.
+## Main menu, pause menu, dan game hanya memanggil fungsi di sini.
+##
+## Alur data:
+##   new_game()   -> reset data di MEMORI saja (file lama aman sampai pemain menyimpan)
+##   save_game()  -> tulis data ke file (dipanggil tombol Save di pause / autosave)
+##   load_game()  -> baca file ke data, mengembalikan true/false
+##   has_save()   -> true hanya kalau file ada DAN isinya bisa dibaca
+
+signal saved(success: bool)
 
 const SAVE_PATH := "user://savegame.json"
+const TEMP_PATH := "user://savegame.tmp"
+const VERSION := 1
 
-# Data game yang sedang berjalan
-var data := {}
+## Nilai awal game baru. Tambahkan kunci baru di sini.
+const DEFAULT_DATA := {
+	"level": 1,            # level yang akan dimainkan saat Continue
+	"unlocked": 1,         # level tertinggi yang sudah terbuka
+	"score": 0,
+	"time": 0.0,           # total waktu bermain (detik)
+	"intro_seen": false,   # cutscene pembuka sudah ditonton
+	# --- kunci lama, hapus kalau tidak dipakai ---
+	"hp": 100,
+	"position_x": 0.0,
+	"position_y": 0.0,
+}
+## Kunci yang harus bertipe int (JSON mengembalikan angka sebagai float, mis. 4 -> 4.0)
+const INT_KEYS := ["level", "unlocked", "score", "hp"]
 
-# Cek apakah file save sudah ada
+## Data game yang sedang berjalan
+var data: Dictionary = DEFAULT_DATA.duplicate(true)
+
+
+## True hanya kalau file ada dan isinya valid
 func has_save() -> bool:
-	return FileAccess.file_exists(SAVE_PATH)
+	return _read_file() != null
 
-# Buat data awal untuk game baru, lalu simpan
+
+## Mulai dari awal. Hanya mereset data di memori, file save lama TIDAK disentuh.
 func new_game() -> void:
-	data = {
-		"level": 1,
-		"hp": 100,
-		"position_x": 0.0,
-		"position_y": 0.0,
-	}
-	save_game()
+	data = DEFAULT_DATA.duplicate(true)
 
-# Tulis data ke file
-func save_game() -> void:
-	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+
+## Tulis data ke file. Menulis ke file sementara dulu, lalu menggantinya,
+## jadi save lama tidak rusak kalau penulisan gagal di tengah jalan.
+func save_game() -> bool:
+	var payload := data.duplicate(true)
+	payload["version"] = VERSION
+
+	var file := FileAccess.open(TEMP_PATH, FileAccess.WRITE)
 	if file == null:
-		push_error("Gagal menyimpan: " + str(FileAccess.get_open_error()))
-		return
-	file.store_string(JSON.stringify(data))
+		push_error("SaveManager: gagal menyimpan (%s)" % error_string(FileAccess.get_open_error()))
+		saved.emit(false)
+		return false
+	file.store_string(JSON.stringify(payload))
+	file.close()
 
-# Baca file ke dalam data
-func load_game() -> void:
-	if not has_save():
-		return
+	var err := DirAccess.rename_absolute(TEMP_PATH, SAVE_PATH)
+	if err != OK:
+		push_error("SaveManager: gagal mengganti file save (%s)" % error_string(err))
+		saved.emit(false)
+		return false
+	saved.emit(true)
+	return true
+
+
+## Baca file ke data. Mengembalikan false kalau tidak ada atau rusak (data tidak berubah).
+func load_game() -> bool:
+	var loaded = _read_file()
+	if loaded == null:
+		return false
+	data = _normalize(loaded)
+	return true
+
+
+func delete_save() -> void:
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)
+
+
+# ---------------------------------------------------------------
+# INTERNAL
+# ---------------------------------------------------------------
+## Mengembalikan Dictionary kalau file valid, selain itu null
+func _read_file() -> Variant:
+	if not FileAccess.file_exists(SAVE_PATH):
+		return null
 	var file := FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if file == null:
-		push_error("Gagal membaca save: " + str(FileAccess.get_open_error()))
-		return
-	var parsed = JSON.parse_string(file.get_as_text())
-	if parsed is Dictionary:
-		data = parsed
+		push_error("SaveManager: gagal membaca save (%s)" % error_string(FileAccess.get_open_error()))
+		return null
+	var json := JSON.new()
+	if json.parse(file.get_as_text()) != OK:
+		push_warning("SaveManager: file save rusak, diabaikan.")
+		return null
+	if not (json.data is Dictionary):
+		push_warning("SaveManager: isi file save tidak valid, diabaikan.")
+		return null
+	return json.data
+
+
+## Gabungkan dengan nilai awal (kunci yang hilang terisi) dan perbaiki tipe angka
+func _normalize(loaded: Dictionary) -> Dictionary:
+	var result: Dictionary = DEFAULT_DATA.duplicate(true)
+	for key in loaded:
+		if key != "version":
+			result[key] = loaded[key]
+	for key in INT_KEYS:
+		result[key] = _to_int(result[key], int(DEFAULT_DATA[key]))
+	result["time"] = _to_float(result["time"], 0.0)
+	result["intro_seen"] = bool(result["intro_seen"]) if typeof(result["intro_seen"]) == TYPE_BOOL else false
+	return result
+
+
+func _to_int(value: Variant, fallback: int) -> int:
+	match typeof(value):
+		TYPE_INT, TYPE_FLOAT, TYPE_BOOL:
+			return int(value)
+	return fallback
+
+
+func _to_float(value: Variant, fallback: float) -> float:
+	match typeof(value):
+		TYPE_INT, TYPE_FLOAT:
+			return float(value)
+	return fallback

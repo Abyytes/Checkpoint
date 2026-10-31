@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dyjqa34u6omql"]
+
+[ext_resource type="Script" uid="uid://bnxsq0138g8rf" path="res://script/credit_panel.gd" id="1_panel"]
+
+[node name="CreditPanel" type="CanvasLayer" unique_id=1995734239]
+process_mode = 3
+layer = 30
+visible = false
+script = ExtResource("1_panel")
+
+[node name="Root" type="Control" parent="." unique_id=1863627758]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="Root" unique_id=959206176]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.65)
+
+[node name="Center" type="CenterContainer" parent="Root" unique_id=2097482260]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="Root/Center" unique_id=49352946]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(560, 440)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="Root/Center/Panel" unique_id=721216726]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="Box" type="VBoxContainer" parent="Root/Center/Panel/Margin" unique_id=186190243]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Root/Center/Panel/Margin/Box" unique_id=462727170]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="Root/Center/Panel/Margin/Box/Header" unique_id=1886468531]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CREDIT"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="Root/Center/Panel/Margin/Box/Header" unique_id=1158408018]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+text = "X"
+
+[node name="Scroll" type="ScrollContainer" parent="Root/Center/Panel/Margin/Box" unique_id=531577663]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Content" type="RichTextLabel" parent="Root/Center/Panel/Margin/Box/Scroll" unique_id=1567074540]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+mouse_filter = 1
+bbcode_enabled = true
+text = "[center][b]PROJECT MANAGER[/b][/center]
+[center]Abiyyu Abdurrafi[/center]
+
+
+[center][b]DESAIN & PEMROGRAMAN[/b][/center]
+[center]Nama[/center]
+
+
+[center][b]SENI & ANIMASI[/b][/center]
+[center]Nama[/center]
+
+
+[center][b]MUSIK & SUARA[/b][/center]
+[center]Nama[/center]
+
+
+[center][b]TERIMA KASIH[/b][/center]
+[center]Para pemain
+Teman dan keluarga
+Komunitas Godot[/center]
+
+
+[center][b]DIBUAT DENGAN[/b][/center]
+[center]Godot Engine 4[/center]
+
+
+[center]Tekan Esc atau X untuk menutup[/center]"
+fit_content = true
+scroll_active = false

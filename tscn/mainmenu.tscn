@@ -1,117 +1,181 @@
-[gd_scene format=3 uid="uid://0hufwjr5yiwa"]
+[gd_scene format=3 uid="uid://cg31uyyaecm63"]
 
-[ext_resource type="Script" uid="uid://ddclot23xbi3m" path="res://script/mainmenu.gd" id="1_cwr5t"]
-[ext_resource type="PackedScene" uid="uid://bt6yjcxccpnf3" path="res://tscn/SettingsPanel.tscn" id="2_frxbt"]
+[ext_resource type="Script" uid="uid://bnusm874njpnu" path="res://script/mainmenu.gd" id="1_menu"]
+[ext_resource type="PackedScene" path="res://tscn/CreditButton.tscn" id="2_credit"]
+[ext_resource type="PackedScene" uid="uid://bt6yjcxccpnf3" path="res://tscn/SettingsPanel.tscn" id="3_settings"]
+[ext_resource type="PackedScene" uid="uid://dyjqa34u6omql" path="res://tscn/CreditPanel.tscn" id="4_l55u2"]
 
-[node name="mainmenu" type="Control" unique_id=1666083025]
+[node name="mainmenu" type="Control" unique_id=1498368265]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_cwr5t")
+script = ExtResource("1_menu")
 
-[node name="CanvasLayer" type="TextureRect" parent="." unique_id=2094282471]
+[node name="BackgroundColor" type="ColorRect" parent="." unique_id=940006088]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+color = Color(0.08, 0.08, 0.12, 1)
 
-[node name="Label" type="Label" parent="." unique_id=813367340]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="AspectRatioContainer" type="MarginContainer" parent="." unique_id=1736837629]
+[node name="Background" type="TextureRect" parent="." unique_id=273034555]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 6
 
-[node name="VBoxContainer" type="VBoxContainer" parent="AspectRatioContainer" unique_id=715386869]
-layout_mode = 2
-size_flags_vertical = 4
-alignment = 1
-
-[node name="start" type="Button" parent="AspectRatioContainer/VBoxContainer" unique_id=457549987]
-unique_name_in_owner = true
-layout_mode = 2
-text = "START"
-
-[node name="settings" type="Button" parent="AspectRatioContainer/VBoxContainer" unique_id=79514067]
-unique_name_in_owner = true
-layout_mode = 2
-text = "SETTINGS"
-
-[node name="exit" type="Button" parent="AspectRatioContainer/VBoxContainer" unique_id=248974234]
-unique_name_in_owner = true
-layout_mode = 2
-text = "EXIT"
-
-[node name="Credit" type="Button" parent="." unique_id=689124311]
-unique_name_in_owner = true
+[node name="Center" type="CenterContainer" parent="." unique_id=1459530731]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -280.0
-offset_top = -120.0
-offset_right = -126.0
-offset_bottom = -56.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "CREDIT"
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="startpopup" type="CanvasLayer" parent="." unique_id=2044168424]
+[node name="MenuBox" type="VBoxContainer" parent="Center" unique_id=846320003]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Spacer" type="Control" parent="Center/MenuBox" unique_id=1028981812]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="CreditButton" parent="Center/MenuBox" unique_id=1984291857 instance=ExtResource("2_credit")]
+layout_mode = 2
+
+[node name="start" type="Button" parent="Center/MenuBox" unique_id=1500834889]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "MULAI"
+
+[node name="settings" type="Button" parent="Center/MenuBox" unique_id=973599295]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "PENGATURAN"
+
+[node name="exit" type="Button" parent="Center/MenuBox" unique_id=1548001780]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 60)
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "KELUAR"
+
+[node name="startpopup" type="Control" parent="." unique_id=733037811]
 unique_name_in_owner = true
 visible = false
-
-[node name="Control" type="Control" parent="startpopup" unique_id=943063438]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PopupMenu" type="ColorRect" parent="startpopup/Control" unique_id=84955688]
-layout_mode = 0
+[node name="Dim" type="ColorRect" parent="startpopup" unique_id=2020357238]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
 
-[node name="CenterContainer" type="CenterContainer" parent="startpopup/Control/PopupMenu" unique_id=2090000294]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PopupCenter" type="CenterContainer" parent="startpopup" unique_id=1954575424]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="startpopup/Control/PopupMenu/CenterContainer" unique_id=1655263324]
+[node name="PopupPanel" type="PanelContainer" parent="startpopup/PopupCenter" unique_id=268028851]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer" unique_id=390531417]
+[node name="PopupMargin" type="MarginContainer" parent="startpopup/PopupCenter/PopupPanel" unique_id=723149414]
 layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=247598186]
+[node name="PopupBox" type="VBoxContainer" parent="startpopup/PopupCenter/PopupPanel/PopupMargin" unique_id=1460023321]
 layout_mode = 2
+theme_override_constants/separation = 14
 
-[node name="continue" type="Button" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=662006723]
+[node name="TitleLabel" type="Label" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=963252192]
+layout_mode = 2
+theme_override_font_sizes/font_size = 26
+text = "ADA PROGRES TERSIMPAN"
+horizontal_alignment = 1
+
+[node name="InfoLabel" type="Label" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=2000541645]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+text = "Lanjutkan progres terakhir atau mulai dari awal?"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="continue" type="Button" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=166954608]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
-text = "CONTINUE"
+theme_override_font_sizes/font_size = 24
+text = "LANJUTKAN"
 
-[node name="newgame" type="Button" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2020330755]
+[node name="newgame" type="Button" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=490998260]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
-text = "NEW GAME"
+theme_override_font_sizes/font_size = 24
+text = "GAME BARU"
 
-[node name="back" type="Button" parent="startpopup/Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=335815827]
+[node name="back" type="Button" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=1582286845]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
-text = "X"
+theme_override_font_sizes/font_size = 24
+text = "KEMBALI"
 
-[node name="SettingsPanel" parent="." unique_id=554000851 instance=ExtResource("2_frxbt")]
+[node name="message" type="Label" parent="." unique_id=1314447114]
 unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -90.0
+offset_right = 300.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.55, 0.55, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+text = "pesan"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="SettingsPanel" parent="." unique_id=529361152 instance=ExtResource("3_settings")]
+unique_name_in_owner = true
+
+[node name="CreditPanel" parent="." unique_id=1995734239 instance=ExtResource("4_l55u2")]
