@@ -21,6 +21,8 @@ const DEFAULT_DATA := {
 	"score": 0,
 	"time": 0.0,           # total waktu bermain (detik)
 	"intro_seen": false,   # cutscene pembuka sudah ditonton
+	"results": {},        # hasil terbaik per level: "1": {coins, coins_total, hoax, hoax_total, deaths, time}
+	"seen_info": [],      # id InfoZone yang sudah tampil (tutorial sekali seumur save)
 	# --- kunci lama, hapus kalau tidak dipakai ---
 	"hp": 100,
 	"position_x": 0.0,
@@ -81,6 +83,49 @@ func delete_save() -> void:
 
 
 # ---------------------------------------------------------------
+# PROGRES LEVEL DAN POPUP INFO (dipakai game.gd dan InfoZone)
+# ---------------------------------------------------------------
+func get_current_level() -> int:
+	return maxi(1, int(data["level"]))
+
+
+func get_unlocked() -> int:
+	return maxi(1, int(data["unlocked"]))
+
+
+## Hanya mengubah memori. Masuk ke file saat save_game() dipanggil.
+func set_current_level(n: int) -> void:
+	data["level"] = n
+
+
+## Dipanggil saat level n selesai: simpan hasil terbaik, buka level berikutnya,
+## lalu AUTOSAVE ke file.
+func complete_level(n: int, stats: Dictionary) -> void:
+	var key := str(n)
+	var best: Dictionary = stats.duplicate()
+	var old: Dictionary = data["results"].get(key, {})
+	if not old.is_empty():
+		best["coins"] = maxi(int(old.get("coins", 0)), int(stats.get("coins", 0)))
+		best["hoax"] = maxi(int(old.get("hoax", 0)), int(stats.get("hoax", 0)))
+		best["deaths"] = mini(int(old.get("deaths", 999)), int(stats.get("deaths", 0)))
+		best["time"] = minf(float(old.get("time", stats.get("time", 0.0))), float(stats.get("time", 0.0)))
+	data["results"][key] = best
+	data["unlocked"] = maxi(get_unlocked(), n + 1)
+	data["level"] = n + 1
+	save_game()
+
+
+func has_seen_info(id: String) -> bool:
+	return id in data["seen_info"]
+
+
+## Hanya mengubah memori; tersimpan pada autosave berikutnya.
+func mark_info_seen(id: String) -> void:
+	if not has_seen_info(id):
+		data["seen_info"].append(id)
+
+
+# ---------------------------------------------------------------
 # INTERNAL
 # ---------------------------------------------------------------
 ## Mengembalikan Dictionary kalau file valid, selain itu null
@@ -111,6 +156,10 @@ func _normalize(loaded: Dictionary) -> Dictionary:
 		result[key] = _to_int(result[key], int(DEFAULT_DATA[key]))
 	result["time"] = _to_float(result["time"], 0.0)
 	result["intro_seen"] = bool(result["intro_seen"]) if typeof(result["intro_seen"]) == TYPE_BOOL else false
+	if not (result["results"] is Dictionary):
+		result["results"] = {}
+	if not (result["seen_info"] is Array):
+		result["seen_info"] = []
 	return result
 
 
