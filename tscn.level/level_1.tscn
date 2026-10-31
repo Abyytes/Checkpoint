@@ -85,12 +85,13 @@ position = Vector2(304, -122)
 position = Vector2(209, -408)
 
 [node name="spike" parent="Objects" unique_id=1451885565 instance=ExtResource("9_3kwdf")]
+visible = false
 position = Vector2(-465, 110)
 
 [node name="RhythmGate" parent="Objects" unique_id=1122075641 instance=ExtResource("12_laf1n")]
 position = Vector2(-82, -87)
 
-[node name="RhythmGate3" parent="Objects" unique_id=911273772 instance=ExtResource("12_laf1n")]
+[node name="RhythmGate2" parent="Objects" unique_id=911273772 instance=ExtResource("12_laf1n")]
 position = Vector2(304, -152)
 gate_id = 2
 
@@ -119,34 +120,43 @@ position = Vector2(368, -121)
 gate_id = 2
 
 [node name="Teleport" parent="Objects" unique_id=2039622763 instance=ExtResource("14_unqpt")]
+visible = false
 position = Vector2(-594, -40)
 
 [node name="Teleport2" parent="Objects" unique_id=1888490471 instance=ExtResource("14_unqpt")]
+visible = false
 position = Vector2(-538, -40)
 
 [node name="BalloonTrap" parent="Objects" unique_id=695632212 instance=ExtResource("15_n35wg")]
+visible = false
 position = Vector2(-400, -288)
 
 [node name="Virus" parent="Objects" unique_id=1007714594 instance=ExtResource("16_7do3y")]
+visible = false
 position = Vector2(-602, 128)
 
 [node name="IdleTrap" parent="Objects" unique_id=317843933 instance=ExtResource("17_5i34b")]
+visible = false
 position = Vector2(-418, -180)
 
 [node name="Magnet" parent="Objects" unique_id=1626452910 instance=ExtResource("18_ipeip")]
+visible = false
 position = Vector2(-412, -13)
 
 [node name="LaserCannon" parent="Objects" unique_id=778358986 instance=ExtResource("19_ip112")]
+visible = false
 position = Vector2(-594, 16)
 on_width = 10.0
 
 [node name="Checkpoint" parent="Objects" unique_id=193990073 instance=ExtResource("20_0qq0j")]
+visible = false
 position = Vector2(-441, 48)
 
 [node name="PlayerStart" type="Marker2D" parent="." unique_id=911612661]
 position = Vector2(77, 107)
 
 [node name="Player" parent="." unique_id=1975995292 instance=ExtResource("1_et3w1")]
+visible = false
 position = Vector2(-408, -88)
 
 [node name="HoaxPopup" parent="." unique_id=1430220027 instance=ExtResource("22_mt3j7")]

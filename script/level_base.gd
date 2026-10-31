@@ -22,7 +22,6 @@ signal coins_changed(collected: int, total: int)
 @export var camera_margin_tiles: int = 2
 
 @onready var walls: TileMapLayer = $Walls
-@onready var gates: TileMapLayer = $Gates
 @onready var objects: Node2D = $Objects
 @onready var player: Node2D = $Player
 @onready var start: Marker2D = $PlayerStart
@@ -211,9 +210,6 @@ func restart_player() -> void:
 		cam.reset_smoothing()   # kamera langsung di posisi, tidak "meluncur"
 
 
-## Hapus semua tile gerbang di layer Gates (untuk dipakai nanti)
-func open_gates() -> void:
-	gates.clear()
 
 
 ## Player mati (kena spike): tunggu sebentar lalu muncul lagi di PlayerStart.
