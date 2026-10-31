@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://m1a253c8ecgo"]
+
+[node name="startpopup" type="CanvasLayer" unique_id=1940388663]
+visible = false
+
+[node name="Control" type="Control" parent="." unique_id=1833090868]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PopupMenu" type="ColorRect" parent="Control" unique_id=1562425327]
+layout_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/PopupMenu" unique_id=700851478]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/PopupMenu/CenterContainer" unique_id=1672932655]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PopupMenu/CenterContainer/PanelContainer" unique_id=428082747]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer" unique_id=291603553]
+layout_mode = 2
+
+[node name="continue" type="Button" parent="Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=843259883]
+unique_name_in_owner = true
+layout_mode = 2
+text = "CONTINUE"
+
+[node name="newgame" type="Button" parent="Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=994138012]
+unique_name_in_owner = true
+layout_mode = 2
+text = "NEW GAME"
+
+[node name="back" type="Button" parent="Control/PopupMenu/CenterContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=378708305]
+unique_name_in_owner = true
+layout_mode = 2
+text = "X"
