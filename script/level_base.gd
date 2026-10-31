@@ -234,10 +234,7 @@ func restart_player() -> void:
 		cam.reset_smoothing()   # kamera langsung di posisi, tidak "meluncur"
 
 
-<<<<<<< HEAD
-## Hapus semua tile gerbang di layer Gates (untuk dipakai nanti)
-=======
->>>>>>> fec45b4d213ffabe94c1edf713a30cb1f1fc3720
+
 
 
 ## Player mati (kena spike): tunggu sebentar lalu muncul lagi di PlayerStart.
