@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://crgedybmousp3"]
+
+[ext_resource type="Script" uid="uid://bbh85wkwjakaa" path="res://script/game.gd" id="1_game"]
+[ext_resource type="Script" uid="uid://cpvstu6c6ctdn" path="res://script/hud.gd" id="2_hud"]
+[ext_resource type="Script" uid="uid://dqc60aeknv2wn" path="res://script/pause_menu.gd" id="3_pause"]
+[ext_resource type="Script" uid="uid://djdfi8ukn3kc7" path="res://script/info_popup.gd" id="4_info"]
+[ext_resource type="Script" uid="uid://xwlp25oy5ywe" path="res://script/result_screen.gd" id="5_result"]
+
+[node name="game" type="Node2D" unique_id=211826665]
+script = ExtResource("1_game")
+
+[node name="LevelHolder" type="Node2D" parent="." unique_id=1472557716]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=717571376]
+layer = 10
+script = ExtResource("2_hud")
+
+[node name="InfoPopup" type="CanvasLayer" parent="." unique_id=1453724030]
+layer = 20
+script = ExtResource("4_info")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=90004168]
+layer = 25
+script = ExtResource("3_pause")
+
+[node name="ResultScreen" type="CanvasLayer" parent="." unique_id=2131089428]
+layer = 30
+script = ExtResource("5_result")
