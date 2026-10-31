@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://0hufwjr5yiwa"]
+[gd_scene format=3 uid="uid://begcy3oj5t01m"]
 
 [ext_resource type="Script" uid="uid://ddclot23xbi3m" path="res://Lama/mainmenulama.gd" id="1_cwr5t"]
 [ext_resource type="PackedScene" uid="uid://bt6yjcxccpnf3" path="res://tscn/SettingsPanel.tscn" id="2_frxbt"]
