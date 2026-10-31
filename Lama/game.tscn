@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://boby54jhvpod6"]
+
+[ext_resource type="Script" uid="uid://bbh85wkwjakaa" path="res://script/game.gd" id="1_game"]
+[ext_resource type="Script" uid="uid://cpvstu6c6ctdn" path="res://script/hud.gd" id="2_hud"]
+[ext_resource type="Script" uid="uid://djdfi8ukn3kc7" path="res://script/info_popup.gd" id="3_info"]
+[ext_resource type="Script" uid="uid://xwlp25oy5ywe" path="res://script/result_screen.gd" id="4_result"]
+
+[node name="game" type="Node2D" unique_id=1755821417]
+script = ExtResource("1_game")
+
+[node name="LevelHolder" type="Node2D" parent="." unique_id=767743140]
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1430185538]
+layer = 10
+script = ExtResource("2_hud")
+
+[node name="InfoPopup" type="CanvasLayer" parent="." unique_id=815640231]
+layer = 20
+script = ExtResource("3_info")
+
+[node name="ResultScreen" type="CanvasLayer" parent="." unique_id=238865571]
+layer = 30
+script = ExtResource("4_result")
