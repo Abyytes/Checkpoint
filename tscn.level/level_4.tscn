@@ -81,9 +81,6 @@ position = Vector2(-144, -336)
 [node name="hoaxtile2" parent="Objects" unique_id=393865065 instance=ExtResource("7_82cyk")]
 position = Vector2(208, -497)
 
-[node name="coin" parent="Objects" unique_id=1092498999]
-position = Vector2(120, 16)
-
 [node name="spike" parent="Objects" unique_id=1451885565 instance=ExtResource("9_6jwjh")]
 position = Vector2(336, -207)
 
@@ -296,18 +293,18 @@ idle_time = 0.5
 
 [node name="BalloonTrap9" parent="Objects" unique_id=695632212 instance=ExtResource("15_nibt0")]
 position = Vector2(-275, -201)
-start_offset = 0.45
-idle_time = 0.75
+start_offset = 0.75
+idle_time = 0.5
 
 [node name="BalloonTrap11" parent="Objects" unique_id=840165742 instance=ExtResource("15_nibt0")]
 position = Vector2(-275, -296)
-start_offset = 0.3
+start_offset = 0.5
 idle_time = 0.5
 
 [node name="BalloonTrap12" parent="Objects" unique_id=1526096853 instance=ExtResource("15_nibt0")]
 position = Vector2(-275, -392)
-start_offset = 0.15
-idle_time = 0.25
+start_offset = 0.25
+idle_time = 0.5
 
 [node name="BalloonTrap4" parent="Objects" unique_id=1846347085 instance=ExtResource("15_nibt0")]
 position = Vector2(275, -155)
