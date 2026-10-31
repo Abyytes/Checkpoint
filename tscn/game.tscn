@@ -1,7 +1,25 @@
-[gd_scene format=3 uid="uid://boby54jhvpod6"]
+[gd_scene format=3 uid="uid://b3ow2focfpe6u"]
 
-[ext_resource type="PackedScene" uid="uid://c2yexx6jfq8b5" path="res://tscn/hoax_popup.tscn" id="1_407eg"]
+[ext_resource type="Script" uid="uid://bbh85wkwjakaa" path="res://script/game.gd" id="1_game"]
+[ext_resource type="PackedScene" uid="uid://dmwa85x6tsu5h" path="res://tscn.level/level_1.tscn" id="2_740th"]
+[ext_resource type="Script" uid="uid://dqc60aeknv2wn" path="res://script/pause_menu.gd" id="3_pause"]
+[ext_resource type="Script" uid="uid://djdfi8ukn3kc7" path="res://script/info_popup.gd" id="4_info"]
+[ext_resource type="Script" uid="uid://xwlp25oy5ywe" path="res://script/result_screen.gd" id="5_result"]
 
-[node name="game" type="Node2D" unique_id=1394295195]
+[node name="game" type="Node2D" unique_id=227248317]
+script = ExtResource("1_game")
+levels = Array[PackedScene]([ExtResource("2_740th")])
 
-[node name="HoaxPopup" parent="." unique_id=1430220027 instance=ExtResource("1_407eg")]
+[node name="LevelHolder" type="Node2D" parent="." unique_id=942821308]
+
+[node name="InfoPopup" type="CanvasLayer" parent="." unique_id=958427901]
+layer = 20
+script = ExtResource("4_info")
+
+[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1856680768]
+layer = 25
+script = ExtResource("3_pause")
+
+[node name="ResultScreen" type="CanvasLayer" parent="." unique_id=1529191531]
+layer = 30
+script = ExtResource("5_result")

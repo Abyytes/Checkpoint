@@ -13,6 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
+game_scene = "uid://dmwa85x6tsu5h"
 
 [node name="BackgroundColor" type="ColorRect" parent="." unique_id=940006088]
 layout_mode = 1

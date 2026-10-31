@@ -9,6 +9,8 @@ signal player_died
 signal hoax_changed(killed: int, total: int)
 ## Untuk HUD nanti: "Koin 2/5"
 signal coins_changed(collected: int, total: int)
+## Player menyentuh InfoZone. game.gd yang menampilkan popup-nya.
+signal info_requested(zone: InfoZone)
 
 @export var level_title: String = "Level"
 ## Jeda (detik) antara player mati dan muncul lagi di PlayerStart
@@ -22,7 +24,6 @@ signal coins_changed(collected: int, total: int)
 @export var camera_margin_tiles: int = 2
 
 @onready var walls: TileMapLayer = $Walls
-@onready var gates: TileMapLayer = $Gates
 @onready var objects: Node2D = $Objects
 @onready var player: Node2D = $Player
 @onready var start: Marker2D = $PlayerStart
@@ -43,6 +44,7 @@ var _coin_by_cell: Dictionary = {}     # Vector2i -> Coin
 var _coin_tile_by_cell: Dictionary = {} # Vector2i (sel Walls) -> Vector2i (sel layer Coins)
 var _spike_by_cell: Dictionary = {}    # Vector2i -> Spike
 var _spring_by_cell: Dictionary = {}   # Vector2i -> node pegas (spring.gd)
+var _info_by_cell: Dictionary = {}     # Vector2i -> InfoZone
 var _pending_hoax: HoaxTile
 var _finish_cell := Vector2i.ZERO
 
@@ -56,6 +58,7 @@ func _ready() -> void:
 	_setup_coins()
 	_setup_spikes()
 	_setup_springs()
+	_setup_info_zones()
 	_setup_hoax()
 	restart_player()
 	if limit_camera:
@@ -118,6 +121,17 @@ func _setup_springs() -> void:
 		_spring_by_cell[c] = node
 
 
+func _setup_info_zones() -> void:
+	_info_by_cell.clear()
+	for n in get_tree().get_nodes_in_group("info_zone"):
+		var zone := n as InfoZone
+		if zone == null or not is_ancestor_of(zone):
+			continue
+		var c := _cell_of(zone.global_position)
+		zone.global_position = _cell_center(c)     # snap ke tengah tile
+		_info_by_cell[c] = zone
+
+
 func _setup_hoax() -> void:
 	_hoax_by_cell.clear()
 	for n in get_tree().get_nodes_in_group("hoax_tile"):
@@ -174,7 +188,16 @@ func _on_player_moved(c: Vector2i) -> void:
 		player.stop_here()
 		hoax_popup.open()
 
-	# 5) Pegas: ganti arah slide dan naikkan kecepatan.
+	# 5) InfoZone: popup informasi. Dilewati kalau player sudah dihentikan (hoax di tile yang sama).
+	# Mode DIALOG menghentikan player; dibuka lagi oleh game.gd saat popup ditutup.
+	var info: InfoZone = _info_by_cell.get(c)
+	if info != null and not player.locked and info.can_trigger():
+		info.mark_triggered()
+		if info.blocking:
+			player.stop_here()
+		info_requested.emit(info)
+
+	# 6) Pegas: ganti arah slide dan naikkan kecepatan.
 	# Dilewati kalau player sudah dihentikan (misalnya oleh hoax di tile yang sama).
 	var spring: Node2D = _spring_by_cell.get(c)
 	if spring != null and player.sliding:
@@ -212,8 +235,6 @@ func restart_player() -> void:
 
 
 ## Hapus semua tile gerbang di layer Gates (untuk dipakai nanti)
-func open_gates() -> void:
-	gates.clear()
 
 
 ## Player mati (kena spike): tunggu sebentar lalu muncul lagi di PlayerStart.
