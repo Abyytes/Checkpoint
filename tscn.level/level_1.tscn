@@ -9,14 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://ck3bmnxehd53a" path="res://tscn/object tscn/finish_gate.tscn" id="6_ycfhr"]
 [ext_resource type="PackedScene" uid="uid://bka0an53r0aib" path="res://tscn/object tscn/hoaxtile.tscn" id="7_20kca"]
 [ext_resource type="PackedScene" uid="uid://bpuoj7oy824s" path="res://tscn/object tscn/spike.tscn" id="9_3kwdf"]
-[ext_resource type="PackedScene" uid="uid://b0qctdugwopmb" path="res://tscn/object tscn/spring.tscn" id="10_xjmi8"]
-[ext_resource type="PackedScene" uid="uid://dqa2v50t120xm" path="res://tscn/object tscn/hoax_tile_v2.tscn" id="11_dupty"]
 [ext_resource type="PackedScene" uid="uid://lxmdab8co1hk" path="res://tscn/object tscn/RhythmGate.tscn" id="12_laf1n"]
 [ext_resource type="PackedScene" uid="uid://b0gmdm23uco6p" path="res://tscn/object tscn/RhythmTile.tscn" id="13_g6vdl"]
 [ext_resource type="PackedScene" uid="uid://f7nedrmnagd4" path="res://tscn/object tscn/teleport.tscn" id="14_unqpt"]
 [ext_resource type="PackedScene" uid="uid://biu0do7q6vvb0" path="res://tscn/object tscn/balloon_trap.tscn" id="15_n35wg"]
 [ext_resource type="PackedScene" uid="uid://cacxdy2odawx" path="res://tscn/object tscn/virus.tscn" id="16_7do3y"]
-[ext_resource type="PackedScene" uid="uid://bquwmklxvy5vc" path="res://tscn/object tscn/IdleTrap.tscn" id="17_5i34b"]
+[ext_resource type="PackedScene" uid="uid://7mf77gb3nqqa" path="res://tscn/object tscn/IdleTrap.tscn" id="17_5i34b"]
 [ext_resource type="PackedScene" uid="uid://h5lbyse5ing2" path="res://tscn/object tscn/Magnet.tscn" id="18_ipeip"]
 [ext_resource type="PackedScene" uid="uid://by86gmk6mgkie" path="res://tscn/object tscn/LaserCannon.tscn" id="19_ip112"]
 [ext_resource type="PackedScene" uid="uid://cdaguxfg4knef" path="res://tscn/object tscn/Checkpoint.tscn" id="20_0qq0j"]
@@ -67,64 +65,86 @@ color = Color(0.4045111, 0.40451115, 0.4045111, 1)
 metadata/_edit_lock_ = true
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=580171865]
-tile_map_data = PackedByteArray("AAD8//3/AAAAAAAAAAD8//7/AAAAAAAAAAD8////AAAAAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAAAAAAAAAD8/wIAAAAAAAAAAAD8/wMAAAAAAAAAAAD9/wMAAAAAAAAAAAD+/wMAAAAAAAAAAAD//wMAAAAAAAAAAAAAAAMAAAAAAAAAAAABAAMAAAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAAAAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAAAAAAAAAALAAMAAAAAAAAAAAAMAAMAAAAAAAAAAAANAAMAAAAAAAAAAAANAAIAAAAAAAAAAAANAAEAAAAAAAAAAAANAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAMAP//AAAAAAAAAAAMAP7/AAAAAAAAAAAMAP3/AAAAAAAAAAALAP3/AAAAAAAAAAAKAP3/AAAAAAAAAAAJAP3/AAAAAAAAAAAIAP3/AAAAAAAAAAAHAP3/AAAAAAAAAAAGAP3/AAAAAAAAAAAFAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAADAP3/AAAAAAAAAAACAP3/AAAAAAAAAAABAP3/AAAAAAAAAAAAAPz/AAAAAAAAAAD///z/AAAAAAAAAAD+//z/AAAAAAAAAAD9//z/AAAAAAAAAAD8//z/AAAAAAAAAAABAPz/AAAAAAAAAAALAP//AAAAAAAAAAAKAP//AAAAAAAAAAAJAP//AAAAAAAAAAAJAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAHAAAAAAAAAAAAAAAGAAAAAAAAAAAAAAAGAP//AAAAAAAAAAAFAP//AAAAAAAAAAA=")
+position = Vector2(0, 25)
+tile_map_data = PackedByteArray("AAAJAP//AAAAAAAAAAAIAP//AAAAAAAAAAAAAP//AAAAAAAAAAALAP//AAAAAAAAAAAKAP//AAAAAAAAAAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAAAHAAIAAAAAAAAAAAAHAAEAAAAAAAAAAAAHAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAMAP//AAAAAAAAAAAHAPn/AAAAAAAAAAAIAPn/AAAAAAAAAAABAPn/AAAAAAAAAAABAPj/AAAAAAAAAAABAPf/AAAAAAAAAAABAPb/AAAAAAAAAAABAPX/AAAAAAAAAAABAPT/AAAAAAAAAAAAAPn/AAAAAAAAAAD///n/AAAAAAAAAAD+//n/AAAAAAAAAAD9//n/AAAAAAAAAAD8//n/AAAAAAAAAAD8////AAAAAAAAAAD9////AAAAAAAAAAD+////AAAAAAAAAAD/////AAAAAAAAAAANAP//AAAAAAAAAAAGAPz/AAAAAAAAAAD7//7/AAAAAAAAAAD7//3/AAAAAAAAAAD7//z/AAAAAAAAAAD7//v/AAAAAAAAAAD7//r/AAAAAAAAAAD8//v/AAAAAAAAAAD9//v/AAAAAAAAAAD8//3/AAAAAAAAAAD9//3/AAAAAAAAAAACAPz/AAAAAAAAAAD+//v/AAAAAAAAAAD9//r/AAAAAAAAAAD8//r/AAAAAAAAAAAGAPH/AAAAAAAAAAABAP7/AAAAAAAAAAAFAPL/AAAAAAAAAAAFAPP/AAAAAAAAAAADAPj/AAAAAAAAAAADAPf/AAAAAAAAAAADAPb/AAAAAAAAAAADAPX/AAAAAAAAAAAEAPj/AAAAAAAAAAAFAPj/AAAAAAAAAAADAPT/AAAAAAAAAAAFAPX/AAAAAAAAAAACAAMAAAAAAAAAAAADAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAAFAAMAAAAAAAAAAAAGAAMAAAAAAAAAAAAGAPb/AAAAAAAAAAAIAPb/AAAAAAAAAAAIAPX/AAAAAAAAAAABAPP/AAAAAAAAAAADAPP/AAAAAAAAAAABAPL/AAAAAAAAAAACAPH/AAAAAAAAAAADAPH/AAAAAAAAAAAEAPH/AAAAAAAAAAAFAPH/AAAAAAAAAAACAPv/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAP3/AAAAAAAAAAAPAPn/AAAAAAAAAAAPAPr/AAAAAAAAAAAPAPv/AAAAAAAAAAAPAPz/AAAAAAAAAAAPAP3/AAAAAAAAAAAPAP7/AAAAAAAAAAAOAP//AAAAAAAAAAAPAP//AAAAAAAAAAANAPz/AAAAAAAAAAANAPv/AAAAAAAAAAAMAPv/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAAAAAAAAAAKAPv/AAAAAAAAAAAKAPz/AAAAAAAAAAAHAP//AAAAAAAAAAAMAPz/AAAAAAAAAAAIAPj/AAAAAAAAAAAFAPT/AAAAAAAAAAAHAPH/AAAAAAAAAAAPAPj/AAAAAAAAAAAIAPr/AAAAAAAAAAAOAPj/AAAAAAAAAAANAPr/AAAAAAAAAAAMAPr/AAAAAAAAAAAKAPr/AAAAAAAAAAAOAPf/AAAAAAAAAAANAPf/AAAAAAAAAAAMAPf/AAAAAAAAAAALAPf/AAAAAAAAAAAKAPf/AAAAAAAAAAAJAPf/AAAAAAAAAAAIAPf/AAAAAAAAAAAKAPn/AAAAAAAAAAAIAPT/AAAAAAAAAAAHAPT/AAAAAAAAAAAHAPP/AAAAAAAAAAAHAPL/AAAAAAAAAAAKAP3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_85hh8")
 
 [node name="Objects" type="Node2D" parent="." unique_id=2028419958]
 
 [node name="FinishGate" parent="Objects" unique_id=1429664836 instance=ExtResource("6_ycfhr")]
-position = Vector2(-40, 80)
+visible = false
+position = Vector2(-75, 42)
 
 [node name="hoaxtile" parent="Objects" unique_id=573683924 instance=ExtResource("7_20kca")]
-position = Vector2(304, -48)
+position = Vector2(-112, -87)
+
+[node name="hoaxtile2" parent="Objects" unique_id=1536271253 instance=ExtResource("7_20kca")]
+position = Vector2(304, -122)
+
+[node name="hoaxtile3" parent="Objects" unique_id=101469949 instance=ExtResource("7_20kca")]
+position = Vector2(209, -408)
 
 [node name="spike" parent="Objects" unique_id=1451885565 instance=ExtResource("9_3kwdf")]
-position = Vector2(-16, -16)
-
-[node name="spring" parent="Objects" unique_id=2100485050 instance=ExtResource("10_xjmi8")]
-position = Vector2(-80, 40)
-rotation = 0.0
-direction = 0
-
-[node name="HoaxTileV2" parent="Objects" unique_id=550763211 instance=ExtResource("11_dupty")]
-position = Vector2(368, -48)
+position = Vector2(-465, 110)
 
 [node name="RhythmGate" parent="Objects" unique_id=1122075641 instance=ExtResource("12_laf1n")]
-position = Vector2(176, -48)
+position = Vector2(-82, -87)
+
+[node name="RhythmGate3" parent="Objects" unique_id=911273772 instance=ExtResource("12_laf1n")]
+position = Vector2(304, -152)
+gate_id = 2
 
 [node name="RhythmTile" parent="Objects" unique_id=513136299 instance=ExtResource("13_g6vdl")]
-position = Vector2(168, 80)
+position = Vector2(141, 107)
+
+[node name="RhythmTile6" parent="Objects" unique_id=369209884 instance=ExtResource("13_g6vdl")]
+position = Vector2(144, -342)
+gate_id = 2
 
 [node name="RhythmTile2" parent="Objects" unique_id=1622085325 instance=ExtResource("13_g6vdl")]
-position = Vector2(88, 80)
+position = Vector2(79, -256)
+
+[node name="RhythmTile4" parent="Objects" unique_id=894387071 instance=ExtResource("13_g6vdl")]
+position = Vector2(-1, -154)
+
+[node name="RhythmTile7" parent="Objects" unique_id=57180146 instance=ExtResource("13_g6vdl")]
+position = Vector2(-112, -25)
+gate_id = 2
+
+[node name="RhythmTile3" parent="Objects" unique_id=1813323757 instance=ExtResource("13_g6vdl")]
+position = Vector2(465, -121)
+
+[node name="RhythmTile5" parent="Objects" unique_id=1088044574 instance=ExtResource("13_g6vdl")]
+position = Vector2(368, -121)
+gate_id = 2
 
 [node name="Teleport" parent="Objects" unique_id=2039622763 instance=ExtResource("14_unqpt")]
-position = Vector2(-408, 280)
+position = Vector2(-594, -40)
 
 [node name="Teleport2" parent="Objects" unique_id=1888490471 instance=ExtResource("14_unqpt")]
-position = Vector2(-352, 280)
+position = Vector2(-538, -40)
 
 [node name="BalloonTrap" parent="Objects" unique_id=695632212 instance=ExtResource("15_n35wg")]
 position = Vector2(-400, -288)
 
 [node name="Virus" parent="Objects" unique_id=1007714594 instance=ExtResource("16_7do3y")]
-position = Vector2(-416, 448)
+position = Vector2(-602, 128)
 
 [node name="IdleTrap" parent="Objects" unique_id=317843933 instance=ExtResource("17_5i34b")]
-position = Vector2(432, 80)
+position = Vector2(-418, -180)
 
 [node name="Magnet" parent="Objects" unique_id=1626452910 instance=ExtResource("18_ipeip")]
-position = Vector2(-16, -48)
+position = Vector2(-412, -13)
 
 [node name="LaserCannon" parent="Objects" unique_id=778358986 instance=ExtResource("19_ip112")]
-position = Vector2(-408, 336)
+position = Vector2(-594, 16)
 on_width = 10.0
 
 [node name="Checkpoint" parent="Objects" unique_id=193990073 instance=ExtResource("20_0qq0j")]
-position = Vector2(336, 16)
+position = Vector2(-441, 48)
 
 [node name="PlayerStart" type="Marker2D" parent="." unique_id=911612661]
-position = Vector2(-72, 72)
+position = Vector2(77, 107)
 
 [node name="Player" parent="." unique_id=1975995292 instance=ExtResource("1_et3w1")]
 position = Vector2(-408, -88)

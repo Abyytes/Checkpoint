@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://dpwsls204aipn"]
+[gd_scene format=4 uid="uid://dr3ppv5rjugn8"]
 
 [ext_resource type="Texture2D" uid="uid://dx48idw4yjinl" path="res://assets/Tilemap/tile.png" id="1_s1mjy"]
 [ext_resource type="Script" uid="uid://d0ii5lmwom47v" path="res://script/level_base.gd" id="1_xwfa5"]
@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://gwjv8ryhc1kg" path="res://assets/Tilemap/Abu1.png" id="5_qw05t"]
 [ext_resource type="PackedScene" uid="uid://ck3bmnxehd53a" path="res://tscn/object tscn/finish_gate.tscn" id="6_wjmyn"]
 [ext_resource type="PackedScene" uid="uid://bka0an53r0aib" path="res://tscn/object tscn/hoaxtile.tscn" id="7_82cyk"]
-[ext_resource type="PackedScene" uid="uid://b554wvwpq41nj" path="res://tscn/object tscn/coin.tscn" id="8_qjcfl"]
 [ext_resource type="PackedScene" uid="uid://bpuoj7oy824s" path="res://tscn/object tscn/spike.tscn" id="9_6jwjh"]
 [ext_resource type="PackedScene" uid="uid://b0qctdugwopmb" path="res://tscn/object tscn/spring.tscn" id="10_6lwgr"]
 [ext_resource type="PackedScene" uid="uid://dqa2v50t120xm" path="res://tscn/object tscn/hoax_tile_v2.tscn" id="11_s248l"]
@@ -77,7 +76,7 @@ position = Vector2(-144, -16)
 [node name="hoaxtile" parent="Objects" unique_id=573683924 instance=ExtResource("7_82cyk")]
 position = Vector2(-168, -144)
 
-[node name="coin" parent="Objects" unique_id=1092498999 instance=ExtResource("8_qjcfl")]
+[node name="coin" parent="Objects" unique_id=1092498999]
 position = Vector2(120, 16)
 
 [node name="spike" parent="Objects" unique_id=1451885565 instance=ExtResource("9_6jwjh")]
