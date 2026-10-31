@@ -1,4 +1,4 @@
-class_name LevelBase
+class_name Level_5
 extends Node2D
 ## Script induk untuk semua level (level_1 ... level_5).
 ## Pasang di root LevelBase.tscn. Level turunan otomatis memakainya.
