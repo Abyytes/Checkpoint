@@ -91,7 +91,7 @@ position = Vector2(-465, 110)
 [node name="RhythmGate" parent="Objects" unique_id=1122075641 instance=ExtResource("12_laf1n")]
 position = Vector2(-82, -87)
 
-[node name="RhythmGate2" parent="Objects" unique_id=911273772 instance=ExtResource("12_laf1n")]
+[node name="RhythmGate3" parent="Objects" unique_id=911273772 instance=ExtResource("12_laf1n")]
 position = Vector2(304, -152)
 gate_id = 2
 
@@ -156,7 +156,6 @@ position = Vector2(-441, 48)
 position = Vector2(77, 107)
 
 [node name="Player" parent="." unique_id=1975995292 instance=ExtResource("1_et3w1")]
-visible = false
 position = Vector2(-408, -88)
 
 [node name="HoaxPopup" parent="." unique_id=1430220027 instance=ExtResource("22_mt3j7")]

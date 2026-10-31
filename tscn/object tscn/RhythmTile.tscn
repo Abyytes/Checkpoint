@@ -30,15 +30,18 @@ fill_to = Vector2(1, 0.5)
 script = ExtResource("1_vpbi3")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=922281234]
+self_modulate = Color(0.95, 0.35, 0.35, 1)
 texture = SubResource("GradientTexture2D_ring")
 
 [node name="Lit" type="Sprite2D" parent="." unique_id=1257151853]
 visible = false
+self_modulate = Color(0.95, 0.35, 0.35, 1)
 texture = SubResource("GradientTexture2D_disc")
 
 [node name="Glow" type="Sprite2D" parent="." unique_id=1979124712]
 visible = false
 modulate = Color(1, 1, 1, 0.4)
+self_modulate = Color(0.95, 0.35, 0.35, 1)
 texture = SubResource("GradientTexture2D_disc")
 
 [node name="ApproachRing" type="Sprite2D" parent="." unique_id=1294598739]

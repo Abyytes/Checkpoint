@@ -8,12 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://ck3bmnxehd53a" path="res://tscn/object tscn/finish_gate.tscn" id="6_73bm8"]
 [ext_resource type="PackedScene" uid="uid://bka0an53r0aib" path="res://tscn/object tscn/hoaxtile.tscn" id="7_lltae"]
 [ext_resource type="PackedScene" uid="uid://bpuoj7oy824s" path="res://tscn/object tscn/spike.tscn" id="8_3cyvw"]
+[ext_resource type="PackedScene" uid="uid://b0qctdugwopmb" path="res://tscn/object tscn/spring.tscn" id="9_imihq"]
 [ext_resource type="PackedScene" uid="uid://dqa2v50t120xm" path="res://tscn/object tscn/hoax_tile_v2.tscn" id="10_esx5l"]
 [ext_resource type="PackedScene" uid="uid://lxmdab8co1hk" path="res://tscn/object tscn/RhythmGate.tscn" id="11_ls5hu"]
 [ext_resource type="PackedScene" uid="uid://b0gmdm23uco6p" path="res://tscn/object tscn/RhythmTile.tscn" id="12_yhc7x"]
 [ext_resource type="PackedScene" uid="uid://f7nedrmnagd4" path="res://tscn/object tscn/teleport.tscn" id="13_jqxgq"]
 [ext_resource type="PackedScene" uid="uid://biu0do7q6vvb0" path="res://tscn/object tscn/balloon_trap.tscn" id="14_s5ect"]
 [ext_resource type="PackedScene" uid="uid://cacxdy2odawx" path="res://tscn/object tscn/virus.tscn" id="15_jsx0h"]
+[ext_resource type="PackedScene" uid="uid://h5lbyse5ing2" path="res://tscn/object tscn/Magnet.tscn" id="16_wov24"]
 [ext_resource type="PackedScene" uid="uid://by86gmk6mgkie" path="res://tscn/object tscn/LaserCannon.tscn" id="18_poy1r"]
 [ext_resource type="PackedScene" uid="uid://cdaguxfg4knef" path="res://tscn/object tscn/Checkpoint.tscn" id="19_2wean"]
 [ext_resource type="PackedScene" uid="uid://bf05tn1xkl008" path="res://tscn/player.tscn" id="20_oh3lm"]
@@ -47,7 +49,7 @@ sources/1 = SubResource("TileSetAtlasSource_wrk5r")
 sources/2 = SubResource("TileSetAtlasSource_s8ckn")
 sources/3 = SubResource("TileSetAtlasSource_f56nf")
 
-[node name="Level_1" type="Node2D" unique_id=1020848327]
+[node name="Level_5" type="Node2D" unique_id=1020848327]
 script = ExtResource("1_o6oqx")
 metadata/_edit_vertical_guides_ = [-296.0]
 

@@ -16,8 +16,10 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
-SaveManager="*uid://dwvm20n415y1r"
+SaveManager="*uid://oq4n8r20ho8e"
 SettingsManager="*uid://jkbewxgiig8r"
+<<<<<<<HEADSettingsManager="*uid://jkbewxgiig8r"
+<<<<<<<HEAD<<<<<<<HEADSettingsManager="*uid://jkbewxgiig8r"
 
 [display]
 
