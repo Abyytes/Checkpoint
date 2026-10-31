@@ -1,0 +1,12 @@
+[gd_resource type="TileSet" format=3 uid="uid://dordpjhpbr15v"]
+
+[ext_resource type="Texture2D" uid="uid://c5lggo8hg8d4f" path="res://assets/placeholder/coin_tile_placeholder.png" id="1_coin"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_coin"]
+texture = ExtResource("1_coin")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_coin")

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://by86gmk6mgkie"]
+
+[ext_resource type="Script" uid="uid://c3lggxlx4jli2" path="res://script/script object/laser_cannon.gd" id="1_vay3d"]
+[ext_resource type="Texture2D" uid="uid://0cmxvseqhdt" path="res://assets/Placeholder/laser_cannon_placeholder.png" id="2_icon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(32, 32)
+
+[node name="LaserCannon" type="Area2D" unique_id=778358986]
+script = ExtResource("1_vay3d")
+
+[node name="Beam" type="Line2D" parent="." unique_id=584013240]
+points = PackedVector2Array(0, 0, 32, 0)
+width = 3.0
+default_color = Color(1, 0.2, 0.2, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1507913315]
+texture_filter = 1
+texture = ExtResource("2_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1628890790]
+shape = SubResource("RectangleShape2D_1")

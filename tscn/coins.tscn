@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dahglai45iku1"]
+
+[ext_resource type="TileSet" path="res://assets/Placeholder/coin_tileset.tres" id="1_a022e"]
+
+[node name="Coins" type="TileMapLayer" unique_id=2023437713]
+tile_set = ExtResource("1_a022e")

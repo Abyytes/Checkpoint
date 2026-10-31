@@ -1,4 +1,4 @@
-class_name Level4
+class_name LevelBase
 extends Node2D
 ## Script induk untuk semua level (level_1 ... level_5).
 ## Pasang di root LevelBase.tscn. Level turunan otomatis memakainya.
@@ -28,6 +28,9 @@ signal coins_changed(collected: int, total: int)
 @onready var start: Marker2D = $PlayerStart
 @onready var finish_gate: Area2D = objects.get_node("FinishGate")
 @onready var hoax_popup: CanvasLayer = $HoaxPopup
+## Layer tilemap opsional bernama "Coins": koin yang dilukis sebagai tile.
+## Boleh dipakai bersamaan dengan node Coin biasa. Kalau layernya tidak ada, diabaikan.
+@onready var coin_tiles := get_node_or_null("Coins") as TileMapLayer
 
 var total_coins: int = 0
 var coins_collected: int = 0
@@ -37,6 +40,7 @@ var hoax_killed: int = 0
 var _completed := false
 var _hoax_by_cell: Dictionary = {}     # Vector2i -> HoaxTile
 var _coin_by_cell: Dictionary = {}     # Vector2i -> Coin
+var _coin_tile_by_cell: Dictionary = {} # Vector2i (sel Walls) -> Vector2i (sel layer Coins)
 var _spike_by_cell: Dictionary = {}    # Vector2i -> Spike
 var _spring_by_cell: Dictionary = {}   # Vector2i -> node pegas (spring.gd)
 var _pending_hoax: HoaxTile
@@ -76,7 +80,18 @@ func _setup_coins() -> void:
 		var c := _cell_of(coin.global_position)
 		coin.global_position = _cell_center(c)     # snap ke tengah tile
 		_coin_by_cell[c] = coin
-	total_coins = _coin_by_cell.size()
+
+	# Koin tilemap: tiap tile yang terlukis di layer "Coins" dihitung sebagai 1 koin.
+	# Sel dicocokkan lewat posisi dunia, jadi layer Coins tidak harus berada di
+	# koordinat yang sama dengan Walls.
+	_coin_tile_by_cell.clear()
+	if coin_tiles != null:
+		for tc in coin_tiles.get_used_cells():
+			var c := _cell_of(coin_tiles.to_global(coin_tiles.map_to_local(tc)))
+			if not _coin_by_cell.has(c):               # kalau ada node Coin di sel yang sama, node yang dipakai
+				_coin_tile_by_cell[c] = tc
+
+	total_coins = _coin_by_cell.size() + _coin_tile_by_cell.size()
 	coins_collected = 0
 	coins_changed.emit(coins_collected, total_coins)
 
@@ -142,6 +157,13 @@ func _on_player_moved(c: Vector2i) -> void:
 	var coin: Coin = _coin_by_cell.get(c)
 	if coin != null and not coin.is_collected:
 		coin.collect()
+		coins_collected += 1
+		coins_changed.emit(coins_collected, total_coins)
+
+	# 3b) Koin tilemap: tile dihapus, diambil sambil lewat
+	if _coin_tile_by_cell.has(c):
+		coin_tiles.erase_cell(_coin_tile_by_cell[c])
+		_coin_tile_by_cell.erase(c)
 		coins_collected += 1
 		coins_changed.emit(coins_collected, total_coins)
 

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://7mf77gb3nqqa"]
+
+[ext_resource type="Script" uid="uid://dpmiwwqqfvh4n" path="res://script/script object/idle_trap.gd" id="1_54sx2"]
+[ext_resource type="Texture2D" uid="uid://bibqoh6007wox" path="res://assets/Placeholder/idle_trap_placeholder.png" id="2_board"]
+[ext_resource type="Texture2D" uid="uid://gdm6akl4vhd1" path="res://assets/Placeholder/idle_trap_spikes_placeholder.png" id="3_spikes"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
+size = Vector2(32, 32)
+
+[node name="IdleTrap" type="Area2D" unique_id=50998216]
+script = ExtResource("1_54sx2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=188050225]
+texture_filter = 1
+texture = ExtResource("2_board")
+
+[node name="SpikeUp" type="Sprite2D" parent="." unique_id=176611202]
+visible = false
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("3_spikes")
+
+[node name="SpikeRight" type="Sprite2D" parent="." unique_id=1349795172]
+visible = false
+texture_filter = 1
+position = Vector2(32, 0)
+rotation = 1.5708
+texture = ExtResource("3_spikes")
+
+[node name="SpikeDown" type="Sprite2D" parent="." unique_id=1536988871]
+visible = false
+texture_filter = 1
+position = Vector2(0, 32)
+rotation = 3.14159
+texture = ExtResource("3_spikes")
+
+[node name="SpikeLeft" type="Sprite2D" parent="." unique_id=80809203]
+visible = false
+texture_filter = 1
+position = Vector2(-32, 0)
+rotation = 4.71239
+texture = ExtResource("3_spikes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=69487827]
+shape = SubResource("RectangleShape2D_1")

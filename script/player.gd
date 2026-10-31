@@ -5,11 +5,31 @@ signal stopped(cell: Vector2i)
 signal died
 ## Player dipindah teleport (posisi lama dan baru). Dipakai Virus agar lintasan lompatan tidak dihitung sebagai sentuhan
 signal teleported(from_pos: Vector2, to_pos: Vector2)
+## Skill speed up berubah (mulai, berakhir, direset, atau cooldown selesai). Untuk HUD / panel pengaturan
+signal speed_skill_changed
+## Speed up ditolak karena masih cooldown (sisa detik). Untuk HUD / panel pengaturan
+signal speed_denied(cooldown_left: float)
 
 ## Kecepatan dasar (px/detik) pada multiplier 1x
-@export var base_speed: float = 600.0
-## Multiplier kecepatan, 1 sampai 3 (di keyboard: tombol 1/2/3)
-@export_range(1, 3) var speed_mult: int = 1
+@export var base_speed: float = 800.0
+## Multiplier kecepatan, 1 sampai 3 (di keyboard: tombol 1/2/3).
+## Kalau speed_skill_enabled aktif, nilai di atas 1 adalah SKILL: bertahan sementara,
+## lalu cooldown. Mengisinya dari mana pun (keyboard, panel pengaturan) otomatis
+## mengikuti aturan skill.
+@export_range(1, 3) var speed_mult: int = 1:
+	get:
+		return _speed_mult
+	set(v):
+		_set_speed_mult(clampi(v, 1, 3))
+
+@export_group("Skill Speed Up")
+## Nyalakan batas durasi dan cooldown untuk speed up. Matikan untuk perilaku lama (bebas ganti kecepatan)
+@export var speed_skill_enabled: bool = true
+## Lama speed up bertahan (detik). 0 = tanpa batas waktu (cooldown hanya berlaku setelah dibatalkan manual)
+@export var speed_duration: float = 6.0
+## Jeda sebelum speed up bisa dipakai lagi (detik), dihitung sejak speed up berakhir
+@export var speed_cooldown: float = 10.0
+@export_group("")
 ## Jarak swipe minimum (piksel layar) agar dihitung sebagai swipe
 @export var swipe_threshold: float = 40.0
 ## Simpan 1 perintah arah saat sedang slide, dijalankan begitu berhenti
@@ -29,6 +49,13 @@ var alive := true
 ## true = input diabaikan (saat popup hoax terbuka atau level selesai)
 var locked := false
 
+## Sisa waktu speed up yang sedang aktif (detik). Hanya untuk dibaca (HUD)
+var speed_time_left := 0.0
+## Sisa cooldown speed up (detik). Hanya untuk dibaca (HUD)
+var speed_cooldown_left := 0.0
+
+var _speed_mult := 1
+var _skill_ready := false
 var _swipe_active := false
 var _swipe_start := Vector2.ZERO
 var _touch_index := -1
@@ -36,6 +63,9 @@ var _touch_index := -1
 
 func _ready() -> void:
 	add_to_group("player")           # dipakai BalloonTrap untuk menemukan player
+	_skill_ready = true
+	if speed_skill_enabled and _speed_mult > 1:
+		speed_time_left = speed_duration   # speed up dari Inspector dianggap baru dimulai
 	walls = _find_walls()
 	if walls == null:
 		push_error("Player: node 'Walls' (TileMapLayer) tidak ditemukan.")
@@ -165,7 +195,88 @@ func _start_slide(d: Vector2i) -> void:
 	sliding = true
 
 
+# ---------------------------------------------------------------
+# SKILL SPEED UP (durasi + cooldown)
+# ---------------------------------------------------------------
+## True kalau speed up boleh dinyalakan sekarang (tidak sedang cooldown)
+func can_speed_up() -> bool:
+	return not speed_skill_enabled or _speed_mult > 1 or speed_cooldown_left <= 0.0
+
+
+## Dipanggil setter speed_mult. Semua perubahan kecepatan lewat sini
+func _set_speed_mult(v: int) -> void:
+	# Sebelum _ready atau skill dimatikan: isi langsung seperti biasa
+	if not _skill_ready or not speed_skill_enabled:
+		_speed_mult = v
+		return
+	if v == _speed_mult:
+		return
+	if v == 1:                               # dibatalkan manual: cooldown mulai
+		_end_speed_up()
+		return
+	if _speed_mult == 1:                     # memulai speed up
+		if speed_cooldown_left > 0.0:
+			speed_denied.emit(speed_cooldown_left)
+			return
+		speed_time_left = speed_duration
+	_speed_mult = v                          # ganti 2x <-> 3x tidak mengulang timer
+	speed_skill_changed.emit()
+
+
+func _end_speed_up() -> void:
+	_speed_mult = 1
+	speed_time_left = 0.0
+	speed_cooldown_left = speed_cooldown
+	speed_skill_changed.emit()
+
+
+## Dipanggil tiap frame fisika, SEBELUM pengecekan sliding (timer jalan terus)
+func _tick_speed_skill(delta: float) -> void:
+	if not speed_skill_enabled:
+		return
+	if _speed_mult > 1:
+		if speed_duration > 0.0:
+			speed_time_left -= delta
+			if speed_time_left <= 0.0:
+				_end_speed_up()
+	elif speed_cooldown_left > 0.0:
+		speed_cooldown_left = maxf(speed_cooldown_left - delta, 0.0)
+		if speed_cooldown_left == 0.0:
+			speed_skill_changed.emit()
+
+
+## Status skill speed up untuk HUD: &"ready" (siap), &"active" (sedang aktif),
+## atau &"cooldown" (menunggu)
+func speed_state() -> StringName:
+	if _speed_mult > 1:
+		return &"active"
+	if speed_skill_enabled and speed_cooldown_left > 0.0:
+		return &"cooldown"
+	return &"ready"
+
+
+## Isi bar 0..1 untuk HUD: siap = penuh, aktif = sisa durasi, cooldown = kemajuan pengisian
+func speed_ratio() -> float:
+	match speed_state():
+		&"active":
+			if speed_skill_enabled and speed_duration > 0.0:
+				return clampf(speed_time_left / speed_duration, 0.0, 1.0)
+			return 1.0
+		&"cooldown":
+			return clampf(1.0 - speed_cooldown_left / maxf(speed_cooldown, 0.001), 0.0, 1.0)
+	return 1.0
+
+
+## Kembali ke 1x dan hapus cooldown (dipakai saat respawn)
+func reset_speed_skill() -> void:
+	_speed_mult = 1
+	speed_time_left = 0.0
+	speed_cooldown_left = 0.0
+	speed_skill_changed.emit()
+
+
 func _physics_process(delta: float) -> void:
+	_tick_speed_skill(delta)
 	if not sliding:
 		return
 
@@ -286,6 +397,7 @@ func die() -> void:
 
 ## Dipanggil Level/Main saat restart tanpa memuat ulang scene
 func respawn(at_global_pos: Vector2) -> void:
+	reset_speed_skill()
 	alive = true
 	sliding = false
 	boost = 1.0
