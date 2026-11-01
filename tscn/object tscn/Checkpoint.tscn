@@ -8,6 +8,8 @@ size = Vector2(32, 32)
 
 [node name="Checkpoint" type="Area2D" unique_id=193990073]
 script = ExtResource("1_bwj54")
+inactive_color = Color(1, 0, 0, 1)
+active_color = Color(0, 1, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1141825892]
 texture_filter = 1
