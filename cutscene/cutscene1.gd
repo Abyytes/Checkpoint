@@ -46,7 +46,7 @@ const PAGE_BG := Color("#0b0b12")
 ## Gambar 1920x1080 menutupi seluruh layar.
 const FULL := Rect2(0, 0, 1, 1)
 
-const CLOSING_TEXT := "Di Dunia saat ini mereka lebih mempercayai apa yang ada di layar mereka sendiri."
+const CLOSING_TEXT := "Nowadays, people trust what's on their screens way more than actual reality"
 
 ## Setelah cutscene selesai (atau di-SKIP), CutscenePlayer pindah ke scene ini.
 ## Kalau game.tscn-mu ada di folder lain, ubah path ini.

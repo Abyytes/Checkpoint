@@ -93,7 +93,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 22
-text = "KLIK / SPASI  >>"
+text = "Click/Space"
 horizontal_alignment = 2
 
 [node name="Fade" type="ColorRect" parent="." unique_id=1404684823]
