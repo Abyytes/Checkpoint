@@ -50,7 +50,9 @@ sources/2 = SubResource("TileSetAtlasSource_s8ckn")
 sources/3 = SubResource("TileSetAtlasSource_f56nf")
 
 [node name="Level_1" type="Node2D" unique_id=1020848327]
+position = Vector2(1675, -762)
 script = ExtResource("1_xsagx")
+camera_margin_tiles = 1
 metadata/_edit_vertical_guides_ = [-296.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1363614180]
@@ -160,7 +162,7 @@ position = Vector2(-441, 48)
 position = Vector2(77, 107)
 
 [node name="Player" parent="." unique_id=1975995292 instance=ExtResource("1_et3w1")]
-position = Vector2(-408, -88)
+position = Vector2(-371, -61)
 base_speed = 800.0
 speed_duration = 6.0
 speed_cooldown = 10.0

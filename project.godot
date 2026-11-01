@@ -20,8 +20,7 @@ config/icon="uid://bbmomgonh5k2c"
 
 SaveManager="*uid://oq4n8r20ho8e"
 SettingsManager="*uid://jkbewxgiig8r"
-<<<<<<<HEADSettingsManager="*uid://jkbewxgiig8r"
-<<<<<<<HEAD<<<<<<<HEADSettingsManager="*uid://jkbewxgiig8r"
+Audio="*uid://dl4n4wfq5gagy"
 
 [display]
 
