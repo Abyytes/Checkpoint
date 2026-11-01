@@ -1,40 +1,46 @@
 [gd_scene format=3 uid="uid://c2yexx6jfq8b5"]
 
-[ext_resource type="Script" uid="uid://kunl1srqfhis" path="res://script/hoax_popup.gd" id="1_icr7p"]
+[ext_resource type="Script" uid="uid://kunl1srqfhis" path="res://script/hoax_popup.gd" id="1_popup"]
 
-[node name="HoaxPopup" type="CanvasLayer" unique_id=1430220027]
-script = ExtResource("1_icr7p")
+[node name="HoaxPopup" type="CanvasLayer" unique_id=1088699883]
+layer = 10
+visible = false
+script = ExtResource("1_popup")
 
-[node name="Root" type="Control" parent="." unique_id=1404583142]
+[node name="Root" type="Control" parent="." unique_id=1295381395]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="ColorRect" type="ColorRect" parent="Root" unique_id=156135257]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Center" type="CenterContainer" parent="Root" unique_id=1568718995]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
-[node name="Center" type="CenterContainer" parent="Root" unique_id=1346388883]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="PanelContainer" parent="Root/Center" unique_id=1040637143]
+[node name="Box" type="VBoxContainer" parent="Root/Center" unique_id=1410593431]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
 
-[node name="Box" type="VBoxContainer" parent="Root/Center/Panel" unique_id=530530552]
+[node name="Title" type="Label" parent="Root/Center/Box" unique_id=696092023]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.05, 0.05, 0.08, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+text = "HOAX"
+horizontal_alignment = 1
 
-[node name="Label" type="Label" parent="Root/Center/Panel/Box" unique_id=590336852]
+[node name="DeleteButton" type="Button" parent="Root/Center/Box" unique_id=1061046058]
+custom_minimum_size = Vector2(180, 56)
 layout_mode = 2
-
-[node name="Indicator" type="ColorRect" parent="Root/Center/Panel/Box" unique_id=2033106287]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="Root/Center/Panel/Box" unique_id=1277527578]
-layout_mode = 2
-
-[node name="KillButton" type="Button" parent="Root/Center/Panel/Box" unique_id=1478122569]
-layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Delete"

@@ -7,9 +7,9 @@ extends Control
 ##   Judul      = CreditButton, membuka panel credit (tidak perlu disambung di sini)
 ##
 ## Scene tujuan dipilih lewat Inspector (properti Cutscene Scene dan Game Scene).
-## Cutscene sendiri yang harus pindah ke game saat selesai.
+## Cutscene (cutscene1.gd) pindah ke Level_1 sendiri saat selesai.
 
-@export_file("*.tscn") var cutscene_scene: String = "res://tscn/cutscene1.tscn"
+@export_file("*.tscn") var cutscene_scene: String = "res://cutscene/cutscene1.tscn"
 @export_file("*.tscn") var game_scene: String = "res://tscn/game.tscn"
 ## Lama pesan error tampil (detik)
 @export var message_time: float = 4.0

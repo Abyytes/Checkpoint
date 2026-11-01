@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://cacxdy2odawx"]
 
 [ext_resource type="Script" uid="uid://bkftig6y73eqj" path="res://script/script object/virus.gd" id="1_j8vgc"]
-[ext_resource type="Texture2D" uid="uid://dsx8wekqc8q13" path="res://assets/placeholder/virus_placeholder.png" id="2_body"]
+[ext_resource type="Texture2D" uid="uid://iyiaudl0sqy1" path="res://assets/Texture Tiles/Virus.png" id="2_j8vgc"]
 
 [node name="Virus" type="Node2D" unique_id=1007714594]
 script = ExtResource("1_j8vgc")
 
 [node name="Body" type="Sprite2D" parent="." unique_id=1837844333]
-texture = ExtResource("2_body")
+texture = ExtResource("2_j8vgc")
 
 [node name="AlertMark" type="Label" parent="." unique_id=681507491]
 visible = false

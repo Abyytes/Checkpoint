@@ -49,7 +49,7 @@ theme_override_constants/separation = 16
 
 [node name="TitleLabel" type="Label" parent="Root/Center/Panel/Margin/Box" unique_id=1549819573]
 layout_mode = 2
-text = "PENGATURAN"
+text = "SETTINGS"
 horizontal_alignment = 1
 
 [node name="MusicRow" type="HBoxContainer" parent="Root/Center/Panel/Margin/Box" unique_id=1447211424]
@@ -59,7 +59,7 @@ theme_override_constants/separation = 12
 [node name="MusicLabel" type="Label" parent="Root/Center/Panel/Margin/Box/MusicRow" unique_id=1327744793]
 custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
-text = "Musik"
+text = "VOLUME"
 
 [node name="MusicSlider" type="HSlider" parent="Root/Center/Panel/Margin/Box/MusicRow" unique_id=800284048]
 unique_name_in_owner = true
@@ -82,16 +82,16 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-text = "Bisukan semua suara"
+text = "MUTE"
 
 [node name="FullscreenCheck" type="CheckButton" parent="Root/Center/Panel/Margin/Box" unique_id=1622420606]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-text = "Layar penuh"
+text = "FULL SCREEN"
 
 [node name="BackButton" type="Button" parent="Root/Center/Panel/Margin/Box" unique_id=561083405]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
-text = "KEMBALI"
+text = "BACK"

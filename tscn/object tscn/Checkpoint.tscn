@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdaguxfg4knef"]
 
 [ext_resource type="Script" uid="uid://dmxyyi2o6td8k" path="res://script/script object/checkpoint.gd" id="1_bwj54"]
-[ext_resource type="Texture2D" uid="uid://ciar8uvvipkv2" path="res://assets/Placeholder/checkpoint_placeholder.png" id="2_tex"]
+[ext_resource type="Texture2D" uid="uid://dr32sdrex1lf3" path="res://assets/Placeholder/teleport_placeholder.png" id="2_bwj54"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1"]
 size = Vector2(32, 32)
@@ -11,7 +11,7 @@ script = ExtResource("1_bwj54")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1141825892]
 texture_filter = 1
-texture = ExtResource("2_tex")
+texture = ExtResource("2_bwj54")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=330713630]
 shape = SubResource("RectangleShape2D_1")

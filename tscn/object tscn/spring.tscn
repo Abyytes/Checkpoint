@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b0qctdugwopmb"]
 
 [ext_resource type="Script" uid="uid://gqshfeig1v81" path="res://script/script object/spring.gd" id="1_ropnt"]
-[ext_resource type="Texture2D" uid="uid://reqaedbimnfn" path="res://assets/Placeholder/spring_placeholder.png" id="2_bc42d"]
+[ext_resource type="Texture2D" uid="uid://dy8hborx617kv" path="res://assets/Texture Tiles/Spring.png" id="2_ok8g1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_55p71"]
 
@@ -16,5 +16,7 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1360104037]
 rotation = 3.1415927
-texture = ExtResource("2_bc42d")
+texture = ExtResource("2_ok8g1")
+flip_h = true
+flip_v = true
 metadata/_edit_lock_ = true

@@ -62,7 +62,7 @@ offset_left = -16000.0
 offset_top = -16024.0
 offset_right = 16000.0
 offset_bottom = 15976.0
-color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+color = Color(0.76090056, 0, 0.15533635, 1)
 metadata/_edit_lock_ = true
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=580171865]

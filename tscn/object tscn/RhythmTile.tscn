@@ -1,18 +1,7 @@
 [gd_scene format=3 uid="uid://b0gmdm23uco6p"]
 
 [ext_resource type="Script" uid="uid://d2a5rlpy18uce" path="res://script/script object/rhythm_tile.gd" id="1_vpbi3"]
-
-[sub_resource type="Gradient" id="Gradient_ring"]
-offsets = PackedFloat32Array(0, 0.7, 0.85, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ring"]
-gradient = SubResource("Gradient_ring")
-width = 24
-height = 24
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
+[ext_resource type="Texture2D" uid="uid://dl27pw5h5m31u" path="res://assets/Texture Tiles/Trigger Hit.png" id="2_kufce"]
 
 [sub_resource type="Gradient" id="Gradient_disc"]
 offsets = PackedFloat32Array(0, 0.85, 1)
@@ -26,12 +15,25 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)
 
+[sub_resource type="Gradient" id="Gradient_ring"]
+offsets = PackedFloat32Array(0, 0.7, 0.85, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ring"]
+gradient = SubResource("Gradient_ring")
+width = 24
+height = 24
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
 [node name="RhythmTile" type="Node2D" unique_id=513136299]
 script = ExtResource("1_vpbi3")
+press_range_tiles = 1.0
 
 [node name="Base" type="Sprite2D" parent="." unique_id=922281234]
 self_modulate = Color(0.95, 0.35, 0.35, 1)
-texture = SubResource("GradientTexture2D_ring")
+texture = ExtResource("2_kufce")
 
 [node name="Lit" type="Sprite2D" parent="." unique_id=1257151853]
 visible = false

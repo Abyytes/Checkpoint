@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bxum1f0q040h5"]
+
+[ext_resource type="Script" uid="uid://cqucc3ahdop2v" path="res://cutscene/cutscene1.gd" id="1_story"]
+[ext_resource type="PackedScene" path="res://cutscene/comic_panel.tscn" id="2_panel"]
+
+[node name="Cutscene" type="Control" unique_id=1537255531]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_story")
+panel_scene = ExtResource("2_panel")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1203915496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.043, 0.043, 0.071, 1)
+
+[node name="PageLayer" type="Control" parent="." unique_id=718787089]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Flash" type="ColorRect" parent="." unique_id=591728320]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="UI" type="Control" parent="." unique_id=446370051]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Buttons" type="HBoxContainer" parent="UI" unique_id=721051029]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -240.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_constants/separation = 8
+
+[node name="AutoButton" type="Button" parent="UI/Buttons" unique_id=320927281]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+focus_mode = 0
+toggle_mode = true
+text = "AUTO"
+
+[node name="SkipButton" type="Button" parent="UI/Buttons" unique_id=1918670523]
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+focus_mode = 0
+text = "SKIP"
+
+[node name="Hint" type="Label" parent="UI" unique_id=31236265]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -56.0
+offset_right = -24.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 22
+text = "KLIK / SPASI  >>"
+horizontal_alignment = 2
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1404684823]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=569038607]

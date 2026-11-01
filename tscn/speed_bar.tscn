@@ -24,6 +24,9 @@ corner_radius_bottom_left = 6
 [node name="SpeedBar" type="CanvasLayer" unique_id=544630609]
 layer = 5
 script = ExtResource("1_bar")
+text_ready = "SPEED Up"
+text_active = "SPEED {mult}x  {time} s"
+text_cooldown = "COOLDOWN  {time} s"
 
 [node name="Root" type="Control" parent="." unique_id=285501365]
 layout_mode = 3

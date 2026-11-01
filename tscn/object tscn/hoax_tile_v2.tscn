@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://blu4xa6ii18kx" path="res://script/script object/hoax_tile_v2.gd" id="1_hoax2"]
 [ext_resource type="Texture2D" uid="uid://l7lgmlj3lc7i" path="res://assets/Placeholder/hoax_puddle_placeholder.png" id="2_puddle"]
 [ext_resource type="Texture2D" uid="uid://d0oruryxsjovw" path="res://assets/Placeholder/hoax_ripple_placeholder.png" id="3_ripple"]
-[ext_resource type="Texture2D" uid="uid://b3ga0a1oidn6e" path="res://assets/Placeholder/hoax_tile_placeholder.png" id="4_tile"]
+[ext_resource type="Texture2D" uid="uid://385377hkbx3m" path="res://assets/Texture Tiles/Hoax Tiles.png" id="4_b8lpg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b8lpg"]
 
@@ -21,7 +21,7 @@ modulate = Color(0.9, 0.15, 0.15, 0.35)
 texture = ExtResource("3_ripple")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1239132356]
-texture = ExtResource("4_tile")
+texture = ExtResource("4_b8lpg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2076461016]
 shape = SubResource("CircleShape2D_b8lpg")

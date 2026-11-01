@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://cg31uyyaecm63"]
 
 [ext_resource type="Script" uid="uid://bnusm874njpnu" path="res://script/mainmenu.gd" id="1_menu"]
-[ext_resource type="PackedScene" path="res://tscn/CreditButton.tscn" id="2_credit"]
+[ext_resource type="Texture2D" uid="uid://fokbqem4k6g0" path="res://assets/UI UX MENU/Artboard 3 copy@72x.png" id="2_acfd3"]
+[ext_resource type="PackedScene" uid="uid://8tjt4uvi6mo4" path="res://tscn/CreditButton.tscn" id="2_credit"]
 [ext_resource type="PackedScene" uid="uid://bt6yjcxccpnf3" path="res://tscn/SettingsPanel.tscn" id="3_settings"]
+[ext_resource type="Texture2D" uid="uid://ciwxxe0372lup" path="res://assets/UI UX MENU/Asset 53.png" id="4_ahn2e"]
 [ext_resource type="PackedScene" uid="uid://dyjqa34u6omql" path="res://tscn/CreditPanel.tscn" id="4_l55u2"]
+[ext_resource type="Texture2D" uid="uid://bklgaqha0qlf7" path="res://assets/UI UX MENU/Asset 26.png" id="5_6kxwh"]
+[ext_resource type="Texture2D" uid="uid://ciavqj5jj6wm8" path="res://assets/UI UX MENU/Asset 27.png" id="6_nfr3u"]
 
 [node name="mainmenu" type="Control" unique_id=1498368265]
 layout_mode = 3
@@ -13,7 +17,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
-game_scene = "uid://dmwa85x6tsu5h"
 
 [node name="BackgroundColor" type="ColorRect" parent="." unique_id=940006088]
 layout_mode = 1
@@ -33,6 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+texture = ExtResource("2_acfd3")
 expand_mode = 1
 stretch_mode = 6
 
@@ -61,21 +65,27 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "MULAI"
+icon = ExtResource("4_ahn2e")
+flat = true
+icon_alignment = 1
 
 [node name="settings" type="Button" parent="Center/MenuBox" unique_id=973599295]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "PENGATURAN"
+icon = ExtResource("5_6kxwh")
+flat = true
+icon_alignment = 1
 
 [node name="exit" type="Button" parent="Center/MenuBox" unique_id=1548001780]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(320, 60)
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
-text = "KELUAR"
+icon = ExtResource("6_nfr3u")
+flat = true
+icon_alignment = 1
 
 [node name="startpopup" type="Control" parent="." unique_id=733037811]
 unique_name_in_owner = true
@@ -122,13 +132,12 @@ theme_override_constants/separation = 14
 [node name="TitleLabel" type="Label" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=963252192]
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
-text = "ADA PROGRES TERSIMPAN"
+text = "Start Game"
 horizontal_alignment = 1
 
 [node name="InfoLabel" type="Label" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=2000541645]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
-text = "Lanjutkan progres terakhir atau mulai dari awal?"
 horizontal_alignment = 1
 autowrap_mode = 3
 
@@ -137,21 +146,21 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "LANJUTKAN"
+text = "Continue"
 
 [node name="newgame" type="Button" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=490998260]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "GAME BARU"
+text = "New Game"
 
 [node name="back" type="Button" parent="startpopup/PopupCenter/PopupPanel/PopupMargin/PopupBox" unique_id=1582286845]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "KEMBALI"
+text = "Back"
 
 [node name="message" type="Label" parent="." unique_id=1314447114]
 unique_name_in_owner = true
@@ -171,7 +180,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0.55, 0.55, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 6
-text = "pesan"
+text = "Message"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

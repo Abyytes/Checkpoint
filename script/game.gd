@@ -1,157 +1,214 @@
-extends Node2D
-## Scene utama saat bermain. Memuat level satu per satu dan menghubungkan
-## HUD, pause menu, popup info, dan layar hasil ke level yang sedang aktif.
-## Urutan level diatur lewat properti "Levels" di Inspector.
+extends Node
+## Pembungkus game: memuat level ke LevelHolder dan menampilkan HUD
+## (nama level, timer, tombol pause, menu jeda, layar level selesai).
+## HUD otomatis muncul di semua level yang ada di daftar `levels`.
+##
+## Menambah level: cukup simpan scene bernama Level_2.tscn, Level_3.tscn, dst. di folder
+## yang sama dengan Level_1 -> otomatis ditemukan (lihat `auto_discover`).
+## Cara manual tetap bisa: isi `levels` di Inspector (kalau lebih panjang dari hasil scan,
+## daftar manual yang dipakai).
+## Level dianggap selesai kalau level (atau Objects/FinishGate) memancarkan salah satu
+## sinyal di `finish_signals`. Atau panggil `complete_level()` dari script level.
 
-## Seret scene level ke sini, urutan = urutan main
-@export var levels: Array[PackedScene] = []
-## Scene yang dibuka tombol Menu Utama (sesuaikan dengan path mainmenu-mu)
-@export_file("*.tscn") var menu_scene: String = "res://tscn/mainmenu.tscn"
+## Daftar level berurutan. Level_1 = uid://dmwa85x6tsu5h
+@export var levels: Array[String] = ["uid://dmwa85x6tsu5h"]
+## true = cari otomatis Level_1.tscn, Level_2.tscn, ... di folder level.
+@export var auto_discover: bool = true
+## Folder pencarian. Kosong = folder tempat levels[0] berada.
+@export_dir var level_folder: String = ""
+## Scene setelah level TERAKHIR selesai (mis. cutscene ending). Kosong = kembali ke menu.
+@export_file("*.tscn") var ending_scene: String = ""
+## Mulai dari level ke berapa (0 = pertama)
+@export var start_index: int = 0
+## Scene menu utama (mainmenu.tscn)
+@export_file("*.tscn") var menu_scene: String = "uid://cg31uyyaecm63"
+## Nama sinyal "level selesai" yang dicari di level / FinishGate
+@export var finish_signals: PackedStringArray = [
+	"level_completed", "level_finished", "level_complete", "goal_reached",
+	"reached_goal", "finished", "completed", "player_entered",
+]
 
-@onready var holder: Node2D = $LevelHolder
-@onready var pause_menu: CanvasLayer = $PauseMenu
-@onready var info_popup: CanvasLayer = $InfoPopup
-@onready var result: CanvasLayer = $ResultScreen
+@onready var holder: Node = %LevelHolder
+@onready var level_label: Label = %LevelLabel
+@onready var timer_label: Label = %TimerLabel
+@onready var pause_button: Button = %PauseButton
+@onready var pause_panel: Control = %PausePanel
+@onready var pause_resume: Button = %PauseResume
+@onready var pause_restart: Button = %PauseRestart
+@onready var pause_menu: Button = %PauseMenu
+@onready var result_panel: Control = %ResultPanel
+@onready var result_time: Label = %ResultTime
+@onready var result_next: Button = %ResultNext
+@onready var result_menu: Button = %ResultMenu
 
-var index := 0                 # 0-based; nomor level yang tampil = index + 1
-var level: LevelBase
-## HUD milik level yang sedang aktif (node bernama "HUD" di dalam scene level). Boleh null.
-var hud: CanvasLayer
-var _deaths := 0
-var _time := 0.0               # waktu level ini (detik)
-var _timing := false
+var _index := 0
+var _level: Node = null
+var _time := 0.0
+var _running := false
 
 
 func _ready() -> void:
-	pause_menu.restart_pressed.connect(restart_level)
-	pause_menu.menu_pressed.connect(go_to_menu)
-	result.next_pressed.connect(next_level)
-	result.retry_pressed.connect(restart_level)
-	result.menu_pressed.connect(go_to_menu)
-	info_popup.closed.connect(_on_info_closed)
-
-	if levels.is_empty():
-		push_error("Game: isi daftar 'Levels' di Inspector node game.")
-		return
-	load_level(SaveManager.get_current_level() - 1)
+	pause_panel.visible = false
+	result_panel.visible = false
+	pause_button.pressed.connect(func() -> void: _set_paused(true))
+	pause_resume.pressed.connect(func() -> void: _set_paused(false))
+	pause_restart.pressed.connect(restart_level)
+	pause_menu.pressed.connect(go_menu)
+	result_next.pressed.connect(next_level)
+	result_menu.pressed.connect(go_menu)
+	if auto_discover:
+		var found := _discover_levels()
+		if found.size() > levels.size():
+			levels = found
+	print("Game: daftar level = ", levels)
+	load_level(clampi(start_index, 0, maxi(levels.size() - 1, 0)))
 
 
 func _process(delta: float) -> void:
-	# Node ini ikut berhenti saat game di-pause, jadi timer otomatis berhenti.
-	# Timer juga berhenti selama popup info dibaca.
-	if not _timing or info_popup.is_open():
-		return
-	_time += delta
-	SaveManager.data["time"] += delta       # total waktu bermain (kunci "time" di save)
-	if hud != null:
-		hud.set_time(_time)
+	if _running and not get_tree().paused:
+		_time += delta
+		timer_label.text = _fmt(_time)
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_cancel") and not result_panel.visible:
+		_set_paused(not get_tree().paused)
+		get_viewport().set_input_as_handled()
+
+
+# ---------------------------------------------------------------
+# LEVEL
+# ---------------------------------------------------------------
 func load_level(i: int) -> void:
-	if levels.is_empty():
+	if i < 0 or i >= levels.size():
+		push_error("Game: indeks level %d tidak ada." % i)
 		return
-	index = clampi(i, 0, levels.size() - 1)
-	_deaths = 0
+	var packed := load(levels[i]) as PackedScene
+	if packed == null:
+		push_error("Game: gagal memuat level '%s'." % levels[i])
+		return
+
+	if _level != null:
+		holder.remove_child(_level)
+		_level.queue_free()
+		_level = null
+
+	_index = i
+	_level = packed.instantiate()
+	holder.add_child(_level)
+	_hook_finish(_level)
+	_hook_finish(_level.get_node_or_null("Objects/FinishGate"))
+
 	_time = 0.0
-	result.hide_screen()
-
-	# remove_child (bukan hanya queue_free) supaya level lama langsung keluar dari
-	# group "player", "coin", dll. dan tidak mengganggu level baru.
-	if level != null:
-		holder.remove_child(level)
-		level.queue_free()
-		level = null
-		hud = null
-
-	var inst := levels[index].instantiate() as LevelBase
-	if inst == null:
-		push_error("Game: scene level ke-%d bukan turunan LevelBase." % (index + 1))
-		return
-
-	inst.level_completed.connect(_on_level_completed)
-	inst.player_died.connect(func(): _deaths += 1)
-	inst.info_requested.connect(_on_info_requested)
-
-	holder.add_child(inst)
-	level = inst
-
-	# HUD ada di dalam scene level, jadi diambil setelah level masuk tree
-	hud = inst.get_node_or_null("HUD") as CanvasLayer
-	if hud != null:
-		hud.pause_pressed.connect(pause_menu.open)
-		hud.set_time(0.0)
-	else:
-		push_warning("Game: level '%s' tidak punya node HUD." % inst.level_title)
-
-	SaveManager.set_current_level(index + 1)
-	set_gameplay_ui(true)
+	_running = true
+	timer_label.text = _fmt(0.0)
+	level_label.text = "Level %d" % (i + 1)
+	result_panel.visible = false
+	pause_panel.visible = false
+	get_tree().paused = false
 
 
 func restart_level() -> void:
-	if levels.is_empty():
-		return
-	load_level(index)
+	load_level(_index)
 
 
 func next_level() -> void:
-	if levels.is_empty():
-		return
-	load_level(index + 1)
+	if _index + 1 < levels.size():
+		load_level(_index + 1)
+	else:
+		_finish_game()
 
 
-func go_to_menu() -> void:
+## Setelah level terakhir: ke ending_scene kalau ada, kalau tidak ke menu.
+func _finish_game() -> void:
+	get_tree().paused = false
+	if ending_scene != "" and ResourceLoader.exists(ending_scene):
+		get_tree().change_scene_to_file(ending_scene)
+	else:
+		go_menu()
+
+
+func go_menu() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file(menu_scene)
 
 
-## Tampilkan/sembunyikan HUD dan izinkan/larang pause.
-## Pakai ini kalau nanti ada cutscene yang diputar DI DALAM game.tscn:
-##   set_gameplay_ui(false) sebelum cutscene, set_gameplay_ui(true) sesudahnya.
-## Cutscene yang berupa scene sendiri (cutscene1.tscn) tidak perlu ini: HUD memang tidak ada di sana.
-func set_gameplay_ui(on: bool) -> void:
-	if hud != null:
-		hud.visible = on
-	pause_menu.can_open = on
-	_timing = on and level != null
+## Dipanggil saat level selesai (otomatis lewat sinyal, atau manual dari script level).
+func complete_level(_a = null, _b = null) -> void:
+	if not _running:
+		return
+	_running = false
+	result_time.text = "Waktu: " + _fmt(_time)
+	result_next.text = "Level Berikutnya" if _index + 1 < levels.size() else "Selesai"
+	result_panel.visible = true
+	result_next.grab_focus()
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.echo \
-			and event.physical_keycode == KEY_R:
-		restart_level()
+## Sambungkan sinyal "selesai" milik node target ke complete_level().
+func _hook_finish(target: Node) -> void:
+	if target == null:
+		return
+	var names: Array[String] = []
+	for sig in target.get_signal_list():
+		names.append(sig["name"])
+	for n in finish_signals:
+		if n in names and not target.is_connected(n, complete_level):
+			target.connect(n, complete_level)
+			return
 
 
 # ---------------------------------------------------------------
-# EVENT DARI LEVEL
+# AUTO-DISCOVER LEVEL
 # ---------------------------------------------------------------
-func _on_level_completed() -> void:
-	_timing = false
-	pause_menu.can_open = false
-	var stats := {
-		"coins": level.coins_collected,
-		"coins_total": level.total_coins,
-		"hoax": level.hoax_killed,
-		"hoax_total": level.hoax_total,
-		"deaths": _deaths,
-		"time": snappedf(_time, 0.01),
-	}
-	SaveManager.complete_level(index + 1, stats)
-	var has_next := index + 1 < levels.size()
-	var lvl := level
-	await get_tree().create_timer(0.4).timeout
-	if level != lvl:
-		return                       # player sudah restart / pindah level selama jeda
-	result.show_result(level.level_title, stats, has_next)
+## UID (uid://...) -> path biasa. Path biasa dikembalikan apa adanya.
+func _resolve_path(p: String) -> String:
+	if p.begins_with("uid://"):
+		var id := ResourceUID.text_to_id(p)
+		if ResourceUID.has_id(id):
+			return ResourceUID.get_id_path(id)
+	return p
 
 
-func _on_info_requested(zone: InfoZone) -> void:
-	if zone.blocking:
-		info_popup.show_dialog(zone.title, zone.body)
-	else:
-		info_popup.show_toast(zone.title, zone.body, zone.toast_duration)
+## Cari file Level_<angka>.tscn di folder level, urut menurut angka.
+func _discover_levels() -> Array[String]:
+	var out: Array[String] = []
+	if levels.is_empty():
+		return out
+	var folder := level_folder
+	if folder == "":
+		folder = _resolve_path(levels[0]).get_base_dir()
+	var dir := DirAccess.open(folder)
+	if dir == null:
+		return out
+	var re := RegEx.create_from_string("^[Ll]evel_(\\d+)\\.tscn$")
+	var found := {}
+	for f in dir.get_files():
+		var fname := f.trim_suffix(".remap")   # build export menambah .remap
+		var m: RegExMatch = re.search(fname)
+		if m:
+			found[int(m.get_string(1))] = folder.path_join(fname)
+	var keys := found.keys()
+	keys.sort()
+	for k in keys:
+		out.append(String(found[k]))
+	return out
 
 
-## Hanya dialog yang mengirim "closed", jadi aman membuka kunci player di sini
-func _on_info_closed() -> void:
-	if level != null:
-		level.player.unlock()
+# ---------------------------------------------------------------
+# PAUSE
+# ---------------------------------------------------------------
+func _set_paused(value: bool) -> void:
+	get_tree().paused = value
+	pause_panel.visible = value
+	if value:
+		pause_resume.grab_focus()
+
+
+# ---------------------------------------------------------------
+# UTIL
+# ---------------------------------------------------------------
+func _fmt(t: float) -> String:
+	var m := int(t / 60.0)
+	var s := int(t) % 60
+	var cs := int((t - floorf(t)) * 100.0)
+	return "%02d:%02d.%02d" % [m, s, cs]

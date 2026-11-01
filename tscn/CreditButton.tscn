@@ -1,16 +1,16 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene format=3 uid="uid://8tjt4uvi6mo4"]
 
-[ext_resource type="Script" path="res://script/credit_button.gd" id="1_btn"]
-[ext_resource type="PackedScene" path="res://tscn/CreditPanel.tscn" id="2_panel"]
+[ext_resource type="Script" uid="uid://1spq8yfod4bv" path="res://script/credit_button.gd" id="1_btn"]
+[ext_resource type="PackedScene" uid="uid://dyjqa34u6omql" path="res://tscn/CreditPanel.tscn" id="2_panel"]
 
-[node name="CreditButton" type="Button"]
+[node name="CreditButton" type="Button" unique_id=1445159865]
 custom_minimum_size = Vector2(320, 96)
 tooltip_text = "Credit"
 mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 56
-text = "WHERE IS IT"
+text = "-"
 flat = true
 script = ExtResource("1_btn")
 
-[node name="CreditPanel" parent="." instance=ExtResource("2_panel")]
+[node name="CreditPanel" parent="." unique_id=739140715 instance=ExtResource("2_panel")]
 unique_name_in_owner = true

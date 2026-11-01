@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://biu0do7q6vvb0"]
 
 [ext_resource type="Script" uid="uid://bjonnf2e3xlvw" path="res://script/script object/balloon_trap.gd" id="1_mpo1e"]
-[ext_resource type="Texture2D" uid="uid://dm8364mr5dqqi" path="res://assets/placeholder/balloon_body_placeholder.png" id="2_body"]
-[ext_resource type="Texture2D" uid="uid://crvdpohafb1sf" path="res://assets/placeholder/balloon_spike_placeholder.png" id="3_spike"]
+[ext_resource type="Texture2D" uid="uid://dm8364mr5dqqi" path="res://assets/Placeholder/balloon_body_placeholder.png" id="2_body"]
+[ext_resource type="Texture2D" uid="uid://crvdpohafb1sf" path="res://assets/Placeholder/balloon_spike_placeholder.png" id="3_spike"]
 
 [node name="BalloonTrap" type="Node2D" unique_id=695632212]
 script = ExtResource("1_mpo1e")

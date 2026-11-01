@@ -82,28 +82,39 @@ text = "[center][b]PROJECT MANAGER[/b][/center]
 [center]Abiyyu Abdurrafi[/center]
 
 
-[center][b]DESAIN & PEMROGRAMAN[/b][/center]
-[center]Nama[/center]
+[center][b]GAME DESIGN & PROGRAMMING[/b][/center]
+[center]Abiyyu Abdurrafi[/center]
 
 
-[center][b]SENI & ANIMASI[/b][/center]
-[center]Nama[/center]
+[center][b]LEVEL DESIGN[/b][/center]
+[center]Abiyyu Abdurrafi[/center]
 
 
-[center][b]MUSIK & SUARA[/b][/center]
-[center]Nama[/center]
+[center][b]2D ART[/b][/center]
+[center]Anisyah
+Abiyyu Abdurrafi[/center]
 
 
-[center][b]TERIMA KASIH[/b][/center]
-[center]Para pemain
-Teman dan keluarga
-Komunitas Godot[/center]
+[center][b]UI/UX ART[/b][/center]
+[center]Shaquille Roy Alfayed[/center]
 
 
-[center][b]DIBUAT DENGAN[/b][/center]
+[center][b]GAME JAM CONTRIBUTORS[/b][/center]
+[center]Muhammad Rafif Radian — Level Design
+Dimas Haydar Aryasatya — Level Design
+Muhammad Yasser Evfandy — Playtesting[/center]
+
+
+[center][b]SPECIAL THANKS[/b][/center]
+[center]Our players
+Friends and family
+The Godot community[/center]
+
+
+[center][b]MADE WITH[/b][/center]
 [center]Godot Engine 4[/center]
 
 
-[center]Tekan Esc atau X untuk menutup[/center]"
+[center]Press Esc or X to close[/center]"
 fit_content = true
 scroll_active = false

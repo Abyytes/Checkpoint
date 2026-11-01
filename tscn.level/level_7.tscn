@@ -17,9 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://bf05tn1xkl008" path="res://tscn/player.tscn" id="11_jm81q"]
 [ext_resource type="PackedScene" uid="uid://c2yexx6jfq8b5" path="res://tscn/hoax_popup.tscn" id="12_v0qpr"]
 [ext_resource type="PackedScene" uid="uid://f7nedrmnagd4" path="res://tscn/object tscn/teleport.tscn" id="14_8hrex"]
-[ext_resource type="PackedScene" uid="uid://cacxdy2odawx" path="res://tscn/object tscn/virus.tscn" id="16_dc7dy"]
-[ext_resource type="PackedScene" uid="uid://h5lbyse5ing2" path="res://tscn/object tscn/Magnet.tscn" id="17_yuo48"]
-[ext_resource type="PackedScene" uid="uid://by86gmk6mgkie" path="res://tscn/object tscn/LaserCannon.tscn" id="18_66kvn"]
 [ext_resource type="PackedScene" uid="uid://cdaguxfg4knef" path="res://tscn/object tscn/Checkpoint.tscn" id="19_cxw0g"]
 [ext_resource type="PackedScene" uid="uid://7mf77gb3nqqa" path="res://tscn/object tscn/IdleTrap.tscn" id="20_huudr"]
 
@@ -64,7 +61,7 @@ offset_left = -16000.0
 offset_top = -16024.0
 offset_right = 16000.0
 offset_bottom = 15976.0
-color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+color = Color(1.884319e-05, 0.11776904, 0.39995974, 1)
 metadata/_edit_lock_ = true
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=580171865]
@@ -72,13 +69,14 @@ tile_map_data = PackedByteArray("AAAUAP//AAAAAAAAAAAVAP//AAAAAAAAAAAWAP//AAAAAAA
 tile_set = SubResource("TileSet_85hh8")
 
 [node name="Coins" parent="." unique_id=2023437713 instance=ExtResource("6_2se1h")]
-tile_map_data = PackedByteArray("AAAYAPP/AAAAAAAAAAAbAPP/AAAAAAAAAAAdAPP/AAAAAAAAAAApAPn/AAAAAAAAAAApAPv/AAAAAAAAAAAfAPX/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAYAPP/AAAAAAAAAAAbAPP/AAAAAAAAAAAdAPP/AAAAAAAAAAApAPn/AAAAAAAAAAApAPv/AAAAAAAAAAAfAPX/AAAAAAAAAAAWAPz/AwAAAAAAAAAXAPz/AwAAAAAAAAAYAPz/AwAAAAAAAAAZAPz/AwAAAAAAAAAVAPf/AwAAAAAAAAAVAPj/AwAAAAAAAAAVAPn/AwAAAAAAAAAVAPr/AwAAAAAAAAAjAP3/AwAAAAAAAAAkAP3/AwAAAAAAAAAlAP3/AwAAAAAAAAAmAP3/AwAAAAAAAAAnAP3/AwAAAAAAAAAoAP3/AwAAAAAAAAApAP3/AwAAAAAAAAAlAPP/AwAAAAAAAAAmAPP/AwAAAAAAAAAnAPP/AwAAAAAAAAAoAPP/AwAAAAAAAAApAPP/AwAAAAAAAAAqAPP/AwAAAAAAAAArAPP/AwAAAAAAAAAtAPn/AwAAAAAAAAAtAPr/AwAAAAAAAAAtAPv/AwAAAAAAAAAtAPz/AwAAAAAAAAAtAPf/AwAAAAAAAAAtAPb/AwAAAAAAAAAtAPX/AwAAAAAAAAA=")
 
 [node name="Gates" type="TileMapLayer" parent="." unique_id=629879866]
 
 [node name="Objects" type="Node2D" parent="." unique_id=2028419958]
 
 [node name="FinishGate" parent="Objects" unique_id=1429664836 instance=ExtResource("2_k1uss")]
+visible = false
 position = Vector2(456, -49)
 
 [node name="hoaxtile" parent="Objects" unique_id=573683924 instance=ExtResource("3_mx4ou")]
@@ -189,17 +187,6 @@ position = Vector2(912, -367)
 
 [node name="BalloonTrap2" parent="Objects" unique_id=9085027 instance=ExtResource("10_tb1a4")]
 position = Vector2(1002, -79)
-
-[node name="Virus" parent="Objects" unique_id=1007714594 instance=ExtResource("16_dc7dy")]
-position = Vector2(88, -80)
-
-[node name="Magnet" parent="Objects" unique_id=1626452910 instance=ExtResource("17_yuo48")]
-position = Vector2(11, -85)
-
-[node name="LaserCannon" parent="Objects" unique_id=778358986 instance=ExtResource("18_66kvn")]
-position = Vector2(215, -201)
-direction = 2
-on_width = 10.0
 
 [node name="Checkpoint" parent="Objects" unique_id=193990073 instance=ExtResource("19_cxw0g")]
 position = Vector2(814, -178)

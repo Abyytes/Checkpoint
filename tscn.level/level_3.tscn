@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d0ii5lmwom47v" path="res://script/level_base.gd" id="1_e0kit"]
 [ext_resource type="Texture2D" uid="uid://dx48idw4yjinl" path="res://assets/Tilemap/tile.png" id="2_qms6r"]
+[ext_resource type="PackedScene" uid="uid://dahglai45iku1" path="res://tscn/coins.tscn" id="2_xugfo"]
 [ext_resource type="Texture2D" uid="uid://ddpn4wa7835kh" path="res://assets/Tilemap/Sprite-0001.png" id="3_xugfo"]
 [ext_resource type="Texture2D" uid="uid://bebyccuik27vv" path="res://assets/Tilemap/Abu2.png" id="4_a84jt"]
 [ext_resource type="Texture2D" uid="uid://gwjv8ryhc1kg" path="res://assets/Tilemap/Abu1.png" id="5_xjayh"]
@@ -47,7 +48,7 @@ sources/1 = SubResource("TileSetAtlasSource_wrk5r")
 sources/2 = SubResource("TileSetAtlasSource_s8ckn")
 sources/3 = SubResource("TileSetAtlasSource_f56nf")
 
-[node name="Level_1" type="Node2D" unique_id=1020848327]
+[node name="Level_3" type="Node2D" unique_id=1020848327]
 script = ExtResource("1_e0kit")
 metadata/_edit_vertical_guides_ = [-296.0]
 
@@ -60,8 +61,11 @@ offset_left = -16000.0
 offset_top = -16024.0
 offset_right = 16000.0
 offset_bottom = 15976.0
-color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+color = Color(0.75736636, 0, 0.20554432, 1)
 metadata/_edit_lock_ = true
+
+[node name="Coins" parent="." unique_id=2023437713 instance=ExtResource("2_xugfo")]
+tile_map_data = PackedByteArray("AAD+/wIAAwAAAAAAAAD//wIAAwAAAAAAAAAAAAIAAwAAAAAAAAABAAIAAwAAAAAAAAACAAIAAwAAAAAAAAADAAIAAwAAAAAAAAAEAAIAAwAAAAAAAAAFAAIAAwAAAAAAAAAGAAIAAwAAAAAAAAAHAAIAAwAAAAAAAAAIAAIAAwAAAAAAAAAJAAIAAwAAAAAAAAAKAAIAAwAAAAAAAAAOAAEAAwAAAAAAAAAPAAEAAwAAAAAAAAAQAAEAAwAAAAAAAAARAAEAAwAAAAAAAAASAAEAAwAAAAAAAAATAAEAAwAAAAAAAAAUAAEAAwAAAAAAAAAVAAEAAwAAAAAAAAAWAAEAAwAAAAAAAAAXAAEAAwAAAAAAAAAYAAEAAwAAAAAAAAAZAAEAAwAAAAAAAAAaAAEAAwAAAAAAAAAbAAEAAwAAAAAAAAARAP7/AwAAAAAAAAASAP7/AwAAAAAAAAATAP7/AwAAAAAAAAAUAP7/AwAAAAAAAAAVAP7/AwAAAAAAAAAWAP7/AwAAAAAAAAAXAP7/AwAAAAAAAAAYAP7/AwAAAAAAAAAZAP7/AwAAAAAAAAAaAP7/AwAAAAAAAAAbAP7/AwAAAAAAAAAcAP7/AwAAAAAAAAAdAP7/AwAAAAAAAAAeAP7/AwAAAAAAAAAfAP7/AwAAAAAAAAAmAAcAAwAAAAAAAAAlAAcAAwAAAAAAAAAkAAcAAwAAAAAAAAAjAAcAAwAAAAAAAAAiAAcAAwAAAAAAAAAhAAcAAwAAAAAAAAAgAAcAAwAAAAAAAAAfAAcAAwAAAAAAAAAeAAcAAwAAAAAAAAASAPf/AwAAAAAAAAATAPf/AwAAAAAAAAAUAPf/AwAAAAAAAAAVAPf/AwAAAAAAAAAWAPf/AwAAAAAAAAAXAPf/AwAAAAAAAAAYAPf/AwAAAAAAAAAZAPf/AwAAAAAAAAAaAPf/AwAAAAAAAAAbAPf/AwAAAAAAAAAcAPf/AwAAAAAAAAAdAPf/AwAAAAAAAAAeAPf/AwAAAAAAAAAfAPf/AwAAAAAAAAAIAPn/AwAAAAAAAAAJAPn/AwAAAAAAAAAKAPn/AwAAAAAAAAALAPn/AwAAAAAAAAAMAPn/AwAAAAAAAAANAPn/AwAAAAAAAAA=")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=580171865]
 position = Vector2(3, 0)

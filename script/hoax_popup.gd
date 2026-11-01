@@ -1,34 +1,48 @@
 extends CanvasLayer
-## Popup untuk mematikan hoax. Pasang di root HoaxPopup.tscn.
-## Struktur node yang dibutuhkan ada di panduan (nama harus persis).
+## Popup hoax versi paling sederhana: label "HOAX" dan satu tombol "Delete".
+## Kontrak dengan LevelBase (tidak berubah dari sebelumnya):
+##   - open()          dipanggil LevelBase saat player berhenti di tile hoax
+##   - sinyal confirmed dipancarkan saat tombol ditekan. LevelBase lalu mematikan
+##                      hoax-nya dan membuka kunci player
+##
+## Node yang dikenali dari NAMA-nya: Root/Center/Box/Title (Label) dan
+## Root/Center/Box/DeleteButton (Button). Desain dan posisinya bebas diubah di editor.
 
 signal confirmed
 
-const COLOR_ALIVE := Color(0.2, 0.8, 0.35)
-const COLOR_DEAD := Color(0.9, 0.2, 0.2)
+## Teks label. Bisa juga diubah langsung di node Title
+@export var label_text: String = "HOAX"
+## Teks tombol. Bisa juga diubah langsung di node DeleteButton
+@export var button_text: String = "Delete"
 
-@onready var indicator: ColorRect = $Root/Center/Panel/Box/Indicator
-@onready var kill_button: Button = $Root/Center/Panel/Box/KillButton
+var _is_open := false
+
+@onready var _label := get_node_or_null("Root/Center/Box/Title") as Label
+@onready var _button := get_node_or_null("Root/Center/Box/DeleteButton") as Button
 
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS   # tetap bisa diklik saat game dipause
-	kill_button.pressed.connect(_on_kill_pressed)
-	hide()                                    # di editor biarkan terlihat, di game disembunyikan
+	visible = false
+	if _label != null:
+		_label.text = label_text
+	if _button != null:
+		_button.text = button_text
+		_button.pressed.connect(_on_delete_pressed)
 
 
+## Tampilkan popup. Tombol langsung terfokus, jadi Enter/Spasi juga bisa menekannya
 func open() -> void:
-	indicator.color = COLOR_ALIVE
-	kill_button.disabled = false
-	show()
-	kill_button.grab_focus()                  # Enter / Space juga bisa menekan tombol
+	if _is_open:
+		return
+	_is_open = true
+	visible = true
+	if _button != null:
+		_button.grab_focus()
 
 
-func _on_kill_pressed() -> void:
-	kill_button.disabled = true
-	var t := create_tween()
-	t.tween_property(indicator, "color", COLOR_DEAD, 0.35)   # hijau -> merah
-	t.tween_interval(0.25)
-	await t.finished
-	hide()
+func _on_delete_pressed() -> void:
+	if not _is_open:
+		return
+	_is_open = false
+	visible = false
 	confirmed.emit()

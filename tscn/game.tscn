@@ -1,25 +1,196 @@
 [gd_scene format=3 uid="uid://b3ow2focfpe6u"]
 
 [ext_resource type="Script" uid="uid://bbh85wkwjakaa" path="res://script/game.gd" id="1_game"]
-[ext_resource type="PackedScene" uid="uid://dmwa85x6tsu5h" path="res://tscn.level/level_1.tscn" id="2_740th"]
-[ext_resource type="Script" uid="uid://dqc60aeknv2wn" path="res://script/pause_menu.gd" id="3_pause"]
-[ext_resource type="Script" uid="uid://djdfi8ukn3kc7" path="res://script/info_popup.gd" id="4_info"]
-[ext_resource type="Script" uid="uid://xwlp25oy5ywe" path="res://script/result_screen.gd" id="5_result"]
 
-[node name="game" type="Node2D" unique_id=227248317]
+[node name="Game" type="Node" unique_id=1447233318]
+process_mode = 3
 script = ExtResource("1_game")
-levels = Array[PackedScene]([ExtResource("2_740th")])
 
-[node name="LevelHolder" type="Node2D" parent="." unique_id=942821308]
+[node name="LevelHolder" type="Node" parent="." unique_id=349257417]
+unique_name_in_owner = true
+process_mode = 1
 
-[node name="InfoPopup" type="CanvasLayer" parent="." unique_id=958427901]
-layer = 20
-script = ExtResource("4_info")
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1754374019]
+layer = 10
 
-[node name="PauseMenu" type="CanvasLayer" parent="." unique_id=1856680768]
-layer = 25
-script = ExtResource("3_pause")
+[node name="TopBar" type="MarginContainer" parent="HUD" unique_id=1470596591]
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
 
-[node name="ResultScreen" type="CanvasLayer" parent="." unique_id=1529191531]
-layer = 30
-script = ExtResource("5_result")
+[node name="Row" type="HBoxContainer" parent="HUD/TopBar" unique_id=387647117]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="LevelLabel" type="Label" parent="HUD/TopBar/Row" unique_id=1116346642]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 28
+text = "Level 1"
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="HUD/TopBar/Row" unique_id=370384101]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 28
+text = "00:00.00"
+vertical_alignment = 1
+
+[node name="PauseButton" type="Button" parent="HUD/TopBar/Row" unique_id=1009140707]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 28
+text = "II"
+
+[node name="PausePanel" type="Control" parent="HUD" unique_id=1010352594]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="HUD/PausePanel" unique_id=355790681]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Center" type="CenterContainer" parent="HUD/PausePanel" unique_id=1468743744]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="HUD/PausePanel/Center" unique_id=1488424006]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="HUD/PausePanel/Center/Panel" unique_id=223558350]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="Box" type="VBoxContainer" parent="HUD/PausePanel/Center/Panel/Margin" unique_id=1358496983]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="HUD/PausePanel/Center/Panel/Margin/Box" unique_id=1369106467]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="PauseResume" type="Button" parent="HUD/PausePanel/Center/Panel/Margin/Box" unique_id=1500810921]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Continue"
+
+[node name="PauseRestart" type="Button" parent="HUD/PausePanel/Center/Panel/Margin/Box" unique_id=1027662052]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Restart"
+
+[node name="PauseMenu" type="Button" parent="HUD/PausePanel/Center/Panel/Margin/Box" unique_id=32656570]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Main Menu"
+
+[node name="ResultPanel" type="Control" parent="HUD" unique_id=1313130359]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="HUD/ResultPanel" unique_id=2088090835]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Center" type="CenterContainer" parent="HUD/ResultPanel" unique_id=474882847]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="PanelContainer" parent="HUD/ResultPanel/Center" unique_id=1054208810]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="HUD/ResultPanel/Center/Panel" unique_id=707410651]
+layout_mode = 2
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="Box" type="VBoxContainer" parent="HUD/ResultPanel/Center/Panel/Margin" unique_id=496584600]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Title" type="Label" parent="HUD/ResultPanel/Center/Panel/Margin/Box" unique_id=787906122]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Good Job!"
+horizontal_alignment = 1
+
+[node name="ResultTime" type="Label" parent="HUD/ResultPanel/Center/Panel/Margin/Box" unique_id=1195558822]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Time: 00:00.00"
+horizontal_alignment = 1
+
+[node name="ResultNext" type="Button" parent="HUD/ResultPanel/Center/Panel/Margin/Box" unique_id=758412738]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Next Level"
+
+[node name="ResultMenu" type="Button" parent="HUD/ResultPanel/Center/Panel/Margin/Box" unique_id=76008276]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Menu"

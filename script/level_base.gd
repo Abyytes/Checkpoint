@@ -1,4 +1,4 @@
-class_name Level_6
+class_name Level_3
 extends Node2D
 ## Script induk untuk semua level (level_1 ... level_5).
 ## Pasang di root LevelBase.tscn. Level turunan otomatis memakainya.
@@ -24,7 +24,6 @@ signal info_requested(zone: InfoZone)
 @export var camera_margin_tiles: int = 2
 
 @onready var walls: TileMapLayer = $Walls
-@onready var gates: TileMapLayer = $Gates
 @onready var objects: Node2D = $Objects
 @onready var player: Node2D = $Player
 @onready var start: Marker2D = $PlayerStart
@@ -233,11 +232,6 @@ func restart_player() -> void:
 	if cam:
 		cam.force_update_scroll()
 		cam.reset_smoothing()   # kamera langsung di posisi, tidak "meluncur"
-
-
-## Hapus semua tile gerbang di layer Gates (untuk dipakai nanti)
-func open_gates() -> void:
-	gates.clear()
 
 
 

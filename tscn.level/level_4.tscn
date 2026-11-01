@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://biu0do7q6vvb0" path="res://tscn/object tscn/balloon_trap.tscn" id="15_nibt0"]
 [ext_resource type="PackedScene" uid="uid://cacxdy2odawx" path="res://tscn/object tscn/virus.tscn" id="16_nekya"]
 [ext_resource type="PackedScene" uid="uid://c2yexx6jfq8b5" path="res://tscn/hoax_popup.tscn" id="18_q5h6h"]
+[ext_resource type="PackedScene" uid="uid://dahglai45iku1" path="res://tscn/coins.tscn" id="19_7mo6q"]
 [ext_resource type="PackedScene" uid="uid://cdaguxfg4knef" path="res://tscn/object tscn/Checkpoint.tscn" id="19_qjcfl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pm2ft"]
@@ -60,7 +61,7 @@ offset_left = -16000.0
 offset_top = -16024.0
 offset_right = 16000.0
 offset_bottom = 15976.0
-color = Color(0.4045111, 0.40451115, 0.4045111, 1)
+color = Color(0.12005124, 0.12005126, 0.12005121, 1)
 metadata/_edit_lock_ = true
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=580171865]
@@ -212,12 +213,10 @@ gate_id = 5
 [node name="RhythmTile3" parent="Objects" unique_id=1697689082 instance=ExtResource("13_qxmm2")]
 position = Vector2(-240, -78)
 gate_id = 5
-press_range_tiles = 1.0
 
 [node name="RhythmTile20" parent="Objects" unique_id=969606562 instance=ExtResource("13_qxmm2")]
 position = Vector2(-304, 14)
 gate_id = 5
-press_range_tiles = 1.0
 
 [node name="RhythmTile4" parent="Objects" unique_id=1586163670 instance=ExtResource("13_qxmm2")]
 position = Vector2(16, -169)
@@ -344,3 +343,6 @@ position = Vector2(49, -46)
 position = Vector2(-112, 16)
 
 [node name="HoaxPopup" parent="." unique_id=1430220027 instance=ExtResource("18_q5h6h")]
+
+[node name="Coins" parent="." unique_id=2023437713 instance=ExtResource("19_7mo6q")]
+tile_map_data = PackedByteArray("AAD9/wAAAwAAAAAAAAD+/wAAAwAAAAAAAAD//wAAAwAAAAAAAAAAAAAAAwAAAAAAAAABAAAAAwAAAAAAAAACAAAAAwAAAAAAAAADAAAAAwAAAAAAAAAEAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAALAP3/AwAAAAAAAAALAP7/AwAAAAAAAAALAP//AwAAAAAAAAALAAAAAwAAAAAAAAALAAEAAwAAAAAAAAALAAIAAwAAAAAAAAAGAPX/AwAAAAAAAAAGAPb/AwAAAAAAAAAHAPb/AwAAAAAAAAAIAPb/AwAAAAAAAAAJAPb/AwAAAAAAAAAKAPb/AwAAAAAAAAD2//L/AwAAAAAAAAD2//P/AwAAAAAAAAD2//T/AwAAAAAAAAD2//X/AwAAAAAAAAD2//b/AwAAAAAAAAD2//f/AwAAAAAAAAD2//j/AwAAAAAAAAD2//n/AwAAAAAAAAD2//r/AwAAAAAAAAD2/wUAAwAAAAAAAAD3/wUAAwAAAAAAAAD4/wUAAwAAAAAAAAD5/wUAAwAAAAAAAAD6/wUAAwAAAAAAAAD7/wUAAwAAAAAAAAA=")
