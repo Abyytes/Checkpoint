@@ -73,6 +73,7 @@ func play_music(stream: AudioStream, fade := 0.8) -> void:
 	if stream == null or (stream == _current and _music.playing):
 		return
 	_current = stream
+	_enable_loop(stream)
 	var tw := create_tween()
 	if _music.playing:
 		tw.tween_property(_music, "volume_db", -40.0, fade)
@@ -81,6 +82,14 @@ func play_music(stream: AudioStream, fade := 0.8) -> void:
 		_music.volume_db = -40.0
 		_music.play())
 	tw.tween_property(_music, "volume_db", 0.0, fade)
+
+
+## Jaring pengaman: paksa loop untuk .ogg / .mp3 walau lupa centang Loop di Import.
+func _enable_loop(stream: AudioStream) -> void:
+	if stream is AudioStreamOggVorbis:
+		stream.loop = true
+	elif stream is AudioStreamMP3:
+		stream.loop = true
 
 
 func stop_music(fade := 0.8) -> void:

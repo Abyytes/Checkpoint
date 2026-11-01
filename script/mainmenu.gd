@@ -29,6 +29,7 @@ var _message_token := 0
 
 
 func _ready() -> void:
+	Audio.play_music_named("bgm")     # musik latar menu (lanjut ke game tanpa putus)
 	popup.visible = false
 	message_label.visible = false
 	exit_button.visible = not OS.has_feature("web")      # tombol keluar tidak berfungsi di browser
@@ -47,7 +48,6 @@ func _ready() -> void:
 	for path in [cutscene_scene, game_scene]:
 		if path == "" or not ResourceLoader.exists(path):
 			push_warning("MainMenu: scene '%s' tidak ditemukan. Atur di Inspector node mainmenu." % path)
-
 
 # ---------------------------------------------------------------
 # ALUR

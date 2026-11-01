@@ -61,6 +61,7 @@ func _ready() -> void:
 		if found.size() > levels.size():
 			levels = found
 	print("Game: daftar level = ", levels)
+	Audio.play_music_named("bgm")     # lagu sama dengan menu -> lanjut tanpa putus
 	load_level(clampi(start_index, 0, maxi(levels.size() - 1, 0)))
 
 
