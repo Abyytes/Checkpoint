@@ -87,6 +87,7 @@ position = Vector2(2096, 431)
 
 [node name="hoaxtile4" parent="Objects" unique_id=1608814254 instance=ExtResource("8_p8mdd")]
 position = Vector2(1104, 689)
+priority = 1
 
 [node name="spike" parent="Objects" unique_id=1451885565 instance=ExtResource("9_iwqds")]
 position = Vector2(307, -173)
@@ -121,6 +122,7 @@ position = Vector2(1648, 427)
 
 [node name="HoaxTileV4" parent="Objects" unique_id=2103144572 instance=ExtResource("11_u6pw6")]
 position = Vector2(1904, 849)
+priority = 1
 
 [node name="RhythmGate2" parent="Objects" unique_id=123112797 instance=ExtResource("12_26cqs")]
 position = Vector2(1266, 272)
@@ -282,7 +284,7 @@ gate_id = 5
 position = Vector2(1123, 208)
 
 [node name="RhythmTile27" parent="Objects" unique_id=952686372 instance=ExtResource("13_hu1s7")]
-position = Vector2(1268, 273)
+position = Vector2(1266, 272)
 gate_id = 5
 
 [node name="RhythmTile6" parent="Objects" unique_id=1003104768 instance=ExtResource("13_hu1s7")]
@@ -316,13 +318,13 @@ position = Vector2(1361, 787)
 position = Vector2(944, 271)
 
 [node name="Magnet6" parent="Objects" unique_id=966979662 instance=ExtResource("17_a6s2w")]
-position = Vector2(1104, 687)
+position = Vector2(1070, 688)
 
 [node name="Magnet4" parent="Objects" unique_id=1794408508 instance=ExtResource("17_a6s2w")]
 position = Vector2(1122, 269)
 
 [node name="Magnet5" parent="Objects" unique_id=1101968789 instance=ExtResource("17_a6s2w")]
-position = Vector2(1327, 273)
+position = Vector2(1362, 271)
 
 [node name="Magnet2" parent="Objects" unique_id=1236315607 instance=ExtResource("17_a6s2w")]
 position = Vector2(1682, 782)

@@ -180,7 +180,6 @@ position = Vector2(1200, 912)
 
 [node name="Checkpoint2" parent="Objects" unique_id=1542288838 instance=ExtResource("19_2wean")]
 position = Vector2(688, 464)
-active_color = Color(0.5006195, 0.5006196, 0.5006196, 1)
 
 [node name="PlayerStart" type="Marker2D" parent="." unique_id=911612661]
 position = Vector2(720, 560)
