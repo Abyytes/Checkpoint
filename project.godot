@@ -10,9 +10,11 @@ config_version=5
 
 [application]
 
-config/name="Where is it"
+config/name="Nge-Hek"
+config/version="0.1"
 run/main_scene="res://tscn/mainmenu.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
+config/icon="uid://bbmomgonh5k2c"
 
 [autoload]
 
